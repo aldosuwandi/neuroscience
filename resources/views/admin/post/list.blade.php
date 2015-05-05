@@ -44,7 +44,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="#">Create</a>
+    <a class="btn btn-primary" href="/admin/post/create/1">Create</a>
     <hr/>
     <div class="table-responsive">
         @if (!empty($posts))

@@ -88,5 +88,6 @@
         window.prettyPrint && prettyPrint();
     });
 </script>
+@yield('script')
 </body>
 </html>

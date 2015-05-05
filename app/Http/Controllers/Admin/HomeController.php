@@ -2,6 +2,7 @@
 
 use App\Home;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateHomeRequest;
 
 class HomeController extends AdminController {
 
@@ -24,8 +25,13 @@ class HomeController extends AdminController {
 
     public function postCreate(CreateHomeRequest $request)
     {
-        Home::create($request->all());
-        return $this->getList();
+        $destinationPath = 'banner';
+        $fileName = $request->file('image')->getClientOriginalName();
+        Home::create([
+            'img_url' => $fileName
+        ]);
+        $request->file('image')->move($destinationPath, $fileName);
+        return redirect('admin/home');
     }
 
     public function getDelete($id)

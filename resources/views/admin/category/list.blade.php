@@ -24,7 +24,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="#">Create</a>
+    <a class="btn btn-primary" href="/admin/category/create">Create</a>
     <hr/>
     <div class="row">
         <div class="col-md-5">

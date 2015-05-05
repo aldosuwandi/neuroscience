@@ -33,13 +33,22 @@ class PostController extends AdminController {
             ->with('posts',$posts);
     }
 
-    public function getCreate()
+    public function getCreate($clinicId = null)
     {
         $post = new Post();
-        return view('admin.post.form')->with('post',$post);
+        $clinics = Clinic::all();
+        $categories = array();
+        if (!is_null($clinicId)) {
+            $categories = Clinic::find($clinicId)->categories()->getResults();
+        }
+        return view('admin.post.form')
+            ->with('post',$post)
+            ->with('clinics',$clinics)
+            ->with('clinicId',$clinicId)
+            ->with('categories',$categories);
     }
 
-    public function postCreate(CreatePostRequest $request)
+    public function postCreate(Requests\CreatePostRequest $request)
     {
         Post::create($request->all());
         return $this->getList($request->input('clinicId'),$request->input('categoryId'));

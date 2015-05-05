@@ -1,8 +1,7 @@
 <?php namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Clinic;
-use App\Http\Requests\CreateClinicRequest;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateCategoryRequest;
 
 class CategoryController extends AdminController {
 
@@ -27,11 +26,16 @@ class CategoryController extends AdminController {
     public function getCreate()
     {
         $category = new Category();
-        return view('admin.category.form')->with('category',$category);
+        $clinics = Clinic::all();
+        $clinicId = null;
+        return view('admin.category.form')
+            ->with('category',$category)
+            ->with('clinics',$clinics)
+            ->with('clinicId',$clinicId);
     }
 
 
-    public function postCreate(CreateCategotyRequest $request)
+    public function postCreate(CreateCategoryRequest $request)
     {
         Category::create($request->all());
         return $this->getList($request->input('clinicId'));

@@ -3,7 +3,7 @@
 @section('content')
     <h3>Clinic List</h3>
     <hr/>
-    <a class="btn btn-primary" href="#">Create</a>
+    <a class="btn btn-primary" href="/admin/clinic/create">Create</a>
     <hr/>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14">
