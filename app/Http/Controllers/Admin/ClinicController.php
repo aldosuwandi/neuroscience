@@ -24,8 +24,14 @@ class ClinicController extends AdminController {
 
     public function postCreate(CreateClinicRequest $request)
     {
-        Clinic::create($request->all());
-        return $this->getList();
+        $destinationPath = 'clinic';
+        $fileName = $request->file('image')->getClientOriginalName();
+        Clinic::create([
+            'name' => $request->input('name'),
+            'img_url' => $fileName
+        ]);
+        $request->file('image')->move($destinationPath, $fileName);
+        return redirect('admin/clinic');
     }
 
     public function getDelete($id)

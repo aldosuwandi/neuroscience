@@ -29,6 +29,11 @@
             !!}
             <p class="help-block"></p>
         </div>
+    </div><div class="control-group form-group">
+        <div class="controls">
+            {!!Form::label('clinic background')!!}
+            {!!Form::file('image') !!}
+        </div>
     </div>
     <div id="success"></div>
     <!-- For success/fail messages -->

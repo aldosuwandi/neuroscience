@@ -13,32 +13,18 @@
             </tr>
             </thead>
             <tbody>
+            @foreach($schedules as $schedule)
             <tr>
-                <td>Dr. Budiman Irawan</td>
-                <td>Memory</td>
-                <td>Senin</td>
-                <td>10.00 - 12.00</td>
+                <td>{{$schedule->name}}</td>
+                <td>{{$schedule->clinic}}</td>
+                <td>{{$schedule->day}}</td>
+                <td>{{$schedule->time}}</td>
             </tr>
-            <tr>
-                <td>Dr. Budiman Irawan</td>
-                <td>Memory</td>
-                <td>Kamis</td>
-                <td>10.00 - 12.00</td>
-            </tr>
-            <tr>
-                <td>Dr. Budiman Irawan</td>
-                <td>Memory</td>
-                <td>Jumat</td>
-                <td>10.00 - 12.00</td>
-            </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
-
-
-
     <hr>
-
 @stop
 
 

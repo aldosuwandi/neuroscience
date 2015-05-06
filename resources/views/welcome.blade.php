@@ -3,18 +3,9 @@
 <head>
     @include('partials.head')
 </head>
-<body style="padding-top: 50px">
-
+<body style="padding-top: 50px;background: #FFFAE7;">
     @include('partials.nav')
-
     <header id="myCarousel" class="carousel slide">
-        <!-- Indicators -->
-        <ol class="carousel-indicators">
-            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-            <li data-target="#myCarousel" data-slide-to="1"></li>
-            <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>
-
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             <div class="item active">
@@ -24,11 +15,10 @@
             </div>
             <div class="item">
                 <div class="fill">
-                    <img src="/images/doctor_team_1.jpg" style="width:100%;height: 100%">
+                     <img src="/images/doctor_team_1.jpg" style="width:100%;height: 100%">
                 </div>
             </div>
         </div>
-
         <!-- Controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
             <span class="icon-prev"></span>
@@ -37,67 +27,64 @@
             <span class="icon-next"></span>
         </a>
     </header>
-
-
+    <style>
+        div.wrapper{
+            float:left; /* important */
+            position:relative; /* important(so we can absolutely position the description div */
+        }
+        div.description{
+            position:absolute; /* absolute position (so we can position it where we want)*/
+            bottom:0px; /* position will be on bottom */
+            left:0px;
+            width:100%;
+            /* styling bellow */
+            background-color:black;
+            font-size:15px;
+            color:white;
+            opacity:0.6; /* transparency */
+            filter:alpha(opacity=60); /* IE transparency */
+        }
+        p.description_content{
+            padding:10px;
+            margin:0px;
+        }
+    </style>
     <div class="container">
-
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Our Services
                 </h1>
             </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>Memory Clinic</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="/home" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>Intervensional Pain Clinic</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="/home" class="btn btn-default">Learn More</a>
+            @foreach($clinics as $clinic)
+                <div class="col-md-4">
+                    <div class='wrapper'>
+                        <!-- image -->
+                        <img src="/images/doctor_team_1.jpg" style="max-height: 100%;max-width: 100%">
+                        <!-- description div -->
+                        <div class='description'>
+                            <!-- description content -->
+                            <p class='description_content'>
+                                <a  href="/clinic/home/{{$clinic->id}}" style="color:#ffffff;;">{{$clinic->name}}</a>
+                            </p>
+                            <!-- end description content -->
+                        </div>
+                        <!-- end description div -->
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>Stroke Clinic</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="/home" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4>Other Services</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                        <a href="/home" class="btn btn-default">Learn More</a>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
-
         @include('partials.footer')
     </div>
     <!-- Scripts -->
     <script src="{{asset('js/jquery.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            $('#myCarousel').carousel({
+                interval: 3000
+            });
+        });
+    </script>
 </body>
 </html>

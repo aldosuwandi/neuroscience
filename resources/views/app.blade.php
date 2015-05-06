@@ -3,8 +3,7 @@
 <head>
     @include('partials.head')
 </head>
-<body>
-{{--    <img src="{{asset('/images/csfh_img_9648.jpg')}}" id="bg" alt="">--}}
+<body style="background: #FFFAE7;">
     @include('partials.nav')
     <div class="container">
         @yield('content')

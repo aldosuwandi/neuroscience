@@ -20,11 +20,13 @@
         <div class="row">
             <div class="col-lg-6">
                 <ul class="list-unstyled">
-                    <li><a href="/home">Knowledge (3)</a>
-                    </li>
-                    <li><a href="/home">Service (2)</a>
-                    </li>
-                    <li><a href="/question">Question - Answer</a>
+                    @foreach($categories as $category)
+                        <li>
+                            <a href="/clinic/home/{{$clinic->id}}/{{$category->id}}">{{$category->name}}</a>
+                        </li>
+                    @endforeach
+                    <li>
+                        <a href="/question/list/{{$clinic->id}}">Question - Answer</a>
                     </li>
                 </ul>
             </div>

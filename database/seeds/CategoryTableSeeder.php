@@ -11,12 +11,14 @@ class CategoryTableSeeder extends Seeder {
         $statement = "ALTER TABLE category AUTO_INCREMENT = 1;";
         \DB::unprepared($statement);
         for($i = 1; $i <= 5 ; $i++) {
-            for($j = 1; $j <= 3 ; $j++) {
-                Category::create([
-                    'clinic_id' => $i,
-                    'name' => 'Category '.$j
-                ]);
-            }
+            Category::create([
+                'clinic_id' => $i,
+                'name' => 'Knowledge'
+            ]);
+            Category::create([
+                'clinic_id' => $i,
+                'name' => 'Service'
+            ]);
         }
 
     }

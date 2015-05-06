@@ -4,13 +4,13 @@
             <a href="/admin/clinic">Clinic</a>
         </li>
         <li>
-            <a href="/admin/category">Category</a>
+            <a href="/admin/category/list/1">Category</a>
         </li>
         <li>
-            <a href="/admin/post">Post</a>
+            <a href="/admin/post/list/1/1">Post</a>
         </li>
         <li>
-            <a href="/admin/question">Question</a>
+            <a href="/admin/question/list/1">Question</a>
         </li>
         <li>
             <a href="/admin/home">Home Page</a>

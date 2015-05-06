@@ -7,26 +7,25 @@ use App\Question;
 
 class QuestionController extends Controller {
 
-    public function getIndex($clinicId)
+    public function getList($clinicId)
     {
-        $questions = Clinic::find($clinicId)->questions();
-        $categories = Clinic::find($clinicId)->categories();
-        $result = array();
-        foreach ($questions as $approvedQuestion) {
-            if ($approvedQuestion->published) {
-                $result[] = $approvedQuestion;
-            }
-        }
+        $questions = Question::where('clinic_id','=',$clinicId)
+            ->where('published','=',true)
+            ->orderBy('created_at','desc')
+            ->paginate(10);
+        $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.question')
+            ->with('clinic',Clinic::find($clinicId))
             ->with('categories',$categories)
-            ->with('questions',$result);
+            ->with('questions',$questions);
     }
 
     public function getCreate($clinicId)
     {
         $question = new Question();
-        $categories = Clinic::find($clinicId)->categories();
+        $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.form')
+            ->with('clinic',Clinic::find($clinicId))
             ->with('question',$question)
             ->with('categories',$categories);
     }

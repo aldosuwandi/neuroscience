@@ -4,8 +4,7 @@
  * For details, see http://www.apache.org/licenses/LICENSE-2.0.
  */
 
-html,
-body {
+html, body {
     height: 100%;
 }
 
@@ -19,6 +18,27 @@ body {
 
 .img-hover:hover {
     opacity: 0.8;
+}
+
+#bs-example-navbar-collapse-1 li a {
+    color: #1A2674;
+}
+#bs-example-navbar-collapse-1 li a:hover {
+    color: #47AA42;
+}
+#title_brand{
+    color: #1A2674;
+}
+#title_brand:hover{
+    color: #47AA42;
+}
+
+.well{
+    background: #FCF5DD;
+}
+
+.well .row div ul li a {
+    color:#1A2674
 }
 
 /* Home Page Carousel */

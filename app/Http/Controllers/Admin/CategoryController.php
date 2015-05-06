@@ -38,7 +38,7 @@ class CategoryController extends AdminController {
     public function postCreate(CreateCategoryRequest $request)
     {
         Category::create($request->all());
-        return $this->getList($request->input('clinicId'));
+        return redirect('admin/category/'.$request->input('clinicId'));
     }
 
     public function getDelete($id)

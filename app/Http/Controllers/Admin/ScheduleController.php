@@ -22,10 +22,10 @@ class ScheduleController extends AdminController {
         return view('admin.schedule.form')->with('schedule',$schedule);
     }
 
-    public function postCreate(CreateScheduleRequest $request)
+    public function postCreate(Requests\CreateScheduleRequest $request)
     {
         Schedule::create($request->all());
-        return $this->getList();
+        return redirect('admin/schedule');
     }
 
     public function getDelete($id)
@@ -34,7 +34,7 @@ class ScheduleController extends AdminController {
         return $this->getList();
     }
 
-    public function postEdit(CreateScheduleRequest $request)
+    public function postEdit(Requests\CreateScheduleRequest $request)
     {
 
     }

@@ -9,12 +9,12 @@ class HomeTableSeeder extends Seeder {
     public function run()
     {
         DB::table('home')->delete();
-        for($i = 0; $i <= 5 ; $i++) {
-            Home::create([
-                'img_url' => 'dummy_image.jpg',
-            ]);
-        }
-
+        Home::create([
+            'img_url' => 'banner1.jpg',
+        ]);
+        Home::create([
+            'img_url' => 'banner2.png',
+        ]);
     }
 
 }

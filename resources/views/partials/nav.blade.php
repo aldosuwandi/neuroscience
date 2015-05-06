@@ -12,7 +12,7 @@
             <a class="navbar-brand" href="#" style="margin-top: -15px">
                 <img width="200" height="50" src="{{asset('/images/logo_0_0.png')}}"/>
             </a>
-            <a class="navbar-brand" href="/">Neuro Center</a>
+            <a id="title_brand" class="navbar-brand" href="/">Neuro Center</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -21,7 +21,7 @@
                     <a href="/schedule">Jadwal Praktek</a>
                 </li>
                 <li>
-                    <a href="/doctor">Dokter</a>
+                    <a href="/team">Dokter</a>
                 </li>
                 <li>
                     <a href="http://www.siloamhospitals.com/contact-us">Contact</a>

@@ -51,7 +51,7 @@ class PostController extends AdminController {
     public function postCreate(Requests\CreatePostRequest $request)
     {
         Post::create($request->all());
-        return $this->getList($request->input('clinicId'),$request->input('categoryId'));
+        return redirect('admin/post/list/'.$request->input('clinicId').'/'.$request->input('categoryId'));
     }
 
     public function getDelete($id)
@@ -60,7 +60,7 @@ class PostController extends AdminController {
         return $this->getList();
     }
 
-    public function postEdit(CreatePostRequest $request)
+    public function postEdit(Requests\CreatePostRequest $request)
     {
 
     }

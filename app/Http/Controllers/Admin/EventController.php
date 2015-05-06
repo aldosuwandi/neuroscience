@@ -2,6 +2,7 @@
 
 use App\Event;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateEventRequest;
 
 class EventController extends AdminController {
 
@@ -22,10 +23,17 @@ class EventController extends AdminController {
         return view('admin.event.form')->with('event',$event);
     }
 
-    public function postCreate(CreateHomeRequest $request)
+    public function postCreate(CreateEventRequest $request)
     {
-        Event::create($request->all());
-        return $this->getList();
+        $destinationPath = 'event';
+        $fileName = $request->file('image')->getClientOriginalName();
+        Event::create([
+            'name' => $request->input('name'),
+            'link' => $request->input('link'),
+            'img_url' => $fileName
+        ]);
+        $request->file('image')->move($destinationPath, $fileName);
+        return redirect('/admin/event');
     }
 
     public function getDelete($id)

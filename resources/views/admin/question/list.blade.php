@@ -46,7 +46,7 @@
                         <td>{{$question->created_at}}</td>
                         <td>{{$question->published}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger">Edit</a>
+                            <a class="btn btn-sm btn-danger" href="/admin/question/edit">Answer</a>
                             <a class="btn btn-sm btn-success">Delete</a>
                         </td>
                     </tr>

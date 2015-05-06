@@ -17,7 +17,7 @@ class CreateDoctor extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('title');
-            $table->integer('img_url');
+            $table->string('img_url');
             $table->timestamps();
         });
 	}

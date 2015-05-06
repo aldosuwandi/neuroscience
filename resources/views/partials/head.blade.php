@@ -2,7 +2,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Neuro Center</title>
+<title>Siloam - Neuro Center</title>
 <link rel="shortcut icon" href="{{asset('/images/favicon.ico')}}">
 <link href="{{asset('/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
 <link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">

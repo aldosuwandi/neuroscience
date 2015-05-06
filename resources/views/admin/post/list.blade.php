@@ -51,9 +51,9 @@
         <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14">
             <thead>
             <tr>
-                <th class="col-sm-3">Title</th>
-                <th>Author</th>
-                <th>Created Date</th>
+                <th class="col-sm-5">Title</th>
+                <th class="col-sm-3">Author</th>
+                <th class="col-sm-2">Created Date</th>
                 <th>Action</th>
             </tr>
             </thead>

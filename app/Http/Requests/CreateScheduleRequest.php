@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateClinicRequest extends Request {
+class CreateScheduleRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -23,8 +23,10 @@ class CreateClinicRequest extends Request {
 	{
 		return [
 			'name' => 'required',
-            'image' => 'required'
-		];
+            'clinic' => 'required',
+            'day' => 'required',
+            'time' => 'required'
+        ];
 	}
 
 }

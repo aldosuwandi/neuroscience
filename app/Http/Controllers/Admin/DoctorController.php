@@ -22,10 +22,17 @@ class DoctorController extends AdminController {
         return view('admin.doctor.form')->with('doctor',$doctor);
     }
 
-    public function postCreate(CreateDoctorRequest $request)
+    public function postCreate(Requests\CreateDoctorRequest $request)
     {
-        Doctor::create($request->all());
-        return $this->getList();
+        $destinationPath = 'doctor';
+        $fileName = $request->file('image')->getClientOriginalName();
+        Doctor::create([
+            'name' => $request->input('name'),
+            'title' => $request->input('title'),
+            'img_url' => $fileName
+        ]);
+        $request->file('image')->move($destinationPath, $fileName);
+        return redirect('admin/doctor');
     }
 
     public function getDelete($id)

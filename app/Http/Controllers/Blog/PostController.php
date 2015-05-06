@@ -6,13 +6,14 @@ use App\Post;
 
 class PostController extends Controller {
 
-    public function getIndex($id)
+    public function getView($id)
     {
         $post = Post::find($id);
-        $clinic = $post->category()->clinic();
-        $categories = $clinic->categories();
+        $clinic = $post->category()->getResults()->clinic()->getResults();
+        $categories = $clinic->categories()->getResults();
         return view('blog.post')
             ->with('post',$post)
+            ->with('clinic',$clinic)
             ->with('categories',$categories);
     }
 

@@ -8,17 +8,29 @@ class ClinicTableSeeder extends Seeder {
 
     public function run()
     {
-        $faker = Faker\Factory::create();
         $statement = "ALTER TABLE clinic  AUTO_INCREMENT = 1;";
         \DB::unprepared($statement);
         DB::table('clinic')->delete();
-        for($i = 1; $i <= 5 ; $i++) {
-            Clinic::create([
-                'name' => 'Clinic '.$i,
-                'description' => $faker->text()
-            ]);
-        }
-
+        Clinic::create([
+            'name' => 'Memory Clinic',
+            'img_url' => 'clinic.jpg'
+        ]);
+        Clinic::create([
+            'name' => 'Interventional Pain Clinic',
+            'img_url' => 'clinic.jpg'
+        ]);
+        Clinic::create([
+            'name' => 'Multiple Sclerosis Clinic',
+            'img_url' => 'clinic.jpg'
+        ]);
+        Clinic::create([
+            'name' => 'Stroke Clinic',
+            'img_url' => 'clinic.jpg'
+        ]);
+        Clinic::create([
+            'name' => 'Other Services',
+            'img_url' => 'clinic.jpg'
+        ]);
     }
 
 }

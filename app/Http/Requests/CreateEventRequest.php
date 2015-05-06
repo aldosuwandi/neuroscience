@@ -2,7 +2,7 @@
 
 use App\Http\Requests\Request;
 
-class CreateClinicRequest extends Request {
+class CreateEventRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -22,8 +22,8 @@ class CreateClinicRequest extends Request {
 	public function rules()
 	{
 		return [
-			'name' => 'required',
-            'image' => 'required'
+            'name' => 'required',
+			'image' => 'required'
 		];
 	}
 
