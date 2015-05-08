@@ -24,9 +24,6 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="#">Create</a>
-    <hr/>
-
     <div class="table-responsive">
         @if (!empty($questions))
             <table class="table table-striped table-hover table-condensed table-bordered"

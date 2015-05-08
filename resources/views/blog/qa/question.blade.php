@@ -3,7 +3,7 @@
 @section('entries')
     <div class="col-md-8">
         <h1 class="page-header">{{$clinic->name}}
-            <a class="btn btn-info" href="/question/create/{{$clinci->id}}" style="float:right">Tanya Dokter</a>
+            <a class="btn btn-info" href="/question/create/{{$clinic->id}}" style="float:right">Tanya Dokter</a>
         </h1>
         @foreach($questions as $question)
             <div class="article" style="text-align:justify">

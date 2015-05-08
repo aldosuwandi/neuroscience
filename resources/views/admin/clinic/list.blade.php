@@ -9,8 +9,8 @@
         <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14">
             <thead>
             <tr>
-                <th class="col-sm-1">Name</th>
-                <th>Description</th>
+                <th class="col-sm-3">Name</th>
+                <th>Image URL</th>
                 <th class="col-sm-2">Action</th>
             </tr>
             </thead>
@@ -18,7 +18,7 @@
             @foreach($clinics as $clinic)
                 <tr>
                     <td>{{$clinic->name}}</td>
-                    <td>{{$clinic->description}}</td>
+                    <td>{{$clinic->img_url}}</td>
                     <td>
                         <a class="btn btn-sm btn-danger">Edit</a>
                         <a class="btn btn-sm btn-success">Delete</a>

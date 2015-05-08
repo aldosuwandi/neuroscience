@@ -14,10 +14,13 @@ class CategoryController extends AdminController {
     {
         $clinics = Clinic::all();
         $categories = array();
+        $clinic = null;
         if (!is_null($clinicId)) {
             $categories = Clinic::find($clinicId)->categories()->getResults();
+            $clinic = Clinic::find($clinicId);
         }
         return view('admin.category.list')
+            ->with('clinic',$clinic)
             ->with('clinics',$clinics)
             ->with('clinicId',$clinicId)
             ->with('categories',$categories);

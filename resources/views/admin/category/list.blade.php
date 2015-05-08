@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('content')
-    <h3>Category List</h3>
+    <h3>Category List <br/><small>@if($clinic){{$clinic->name}}@endif</small></h3>
     <hr/>
     <div class="row">
         <div class="col-md-2">

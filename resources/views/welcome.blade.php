@@ -8,16 +8,13 @@
     <header id="myCarousel" class="carousel slide">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="item active">
+            @for($i = 0; $i < count($homes); $i++)
+            <div class="item @if($i == 0) active @endif">
                 <div class="fill">
-                    <img src="/images/download.png" style="width:100%;height: 100%">
+                <img src="/banner/{{$homes[$i]->img_url}}" style="width:100%;height: 100%">
                 </div>
             </div>
-            <div class="item">
-                <div class="fill">
-                     <img src="/images/doctor_team_1.jpg" style="width:100%;height: 100%">
-                </div>
-            </div>
+            @endfor
         </div>
         <!-- Controls -->
         <a class="left carousel-control" href="#myCarousel" data-slide="prev">
@@ -58,9 +55,9 @@
             </div>
             @foreach($clinics as $clinic)
                 <div class="col-md-4">
-                    <div class='wrapper'>
+                    <div class='wrapper' style="margin-bottom: 25px;">
                         <!-- image -->
-                        <img src="/images/doctor_team_1.jpg" style="max-height: 100%;max-width: 100%">
+                        <img src="/clinic/{{$clinic->img_url}}" style="max-height: 100%;max-width: 100%">
                         <!-- description div -->
                         <div class='description'>
                             <!-- description content -->

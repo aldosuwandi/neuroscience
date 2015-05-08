@@ -21,7 +21,7 @@ class CreatePostRequest extends Request {
 	 */
 	public function rules()
 	{
-		return [
+        return [
             'category_id' => 'required',
             'creator' => 'required|min:5|max:255',
             'title' => 'required|min:5|max:255',

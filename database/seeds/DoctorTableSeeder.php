@@ -13,7 +13,7 @@ class DoctorTableSeeder extends Seeder {
             Doctor::create([
                 'name' => 'Dr '.$faker->firstName.' '.$faker->lastName,
                 'title' => 'Title Doctor '.$i,
-                'img_url' => 'dummy_image.jpg'
+                'img_url' => 'doctor1.png'
             ]);
         }
 

@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('content')
-    <h3>Post List</h3>
+    <h3>Post List <br/><small>@if($clinic){{$clinic->name}}@endif @if($category)| {{$category->name}}@endif</small></h3>
     <hr/>
     <div class="row">
         <div class="col-md-1">
@@ -44,7 +44,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="/admin/post/create/1">Create</a>
+    <a class="btn btn-primary" href="/admin/post/create">Create</a>
     <hr/>
     <div class="table-responsive">
         @if (!empty($posts))

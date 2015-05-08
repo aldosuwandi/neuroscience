@@ -10,10 +10,10 @@ class HomeTableSeeder extends Seeder {
     {
         DB::table('home')->delete();
         Home::create([
-            'img_url' => 'banner1.jpg',
+            'img_url' => 'banner1.png',
         ]);
         Home::create([
-            'img_url' => 'banner2.png',
+            'img_url' => 'banner2.jpg',
         ]);
     }
 
