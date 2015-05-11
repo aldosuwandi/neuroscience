@@ -4,6 +4,23 @@
     @include('partials.head')
 </head>
 <body style="padding-top: 50px;background: #FFFAE7;">
+    @if (!is_null($event))
+    <div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
+         aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">{{$event->name}}</h4>
+                </div>
+                <a href="/events/view/{{$event->id}}">
+                    <img  src="/uploads/{{$event->img_url}}" style="max-height: 100%;max-width: 100%">
+                </a>
+            </div>
+        </div>
+    </div>
+    @endif
     @include('partials.nav')
     <header id="myCarousel" class="carousel slide">
         <!-- Wrapper for slides -->
@@ -11,7 +28,7 @@
             @for($i = 0; $i < count($homes); $i++)
             <div class="item @if($i == 0) active @endif">
                 <div class="fill">
-                <img src="/banner/{{$homes[$i]->img_url}}" style="width:100%;height: 100%">
+                <img src="/uploads/{{$homes[$i]->img_url}}" style="width:100%;height: 100%">
                 </div>
             </div>
             @endfor
@@ -57,7 +74,7 @@
                 <div class="col-md-4">
                     <div class='wrapper' style="margin-bottom: 25px;">
                         <!-- image -->
-                        <img src="/clinic/{{$clinic->img_url}}" style="max-height: 100%;max-width: 100%">
+                        <img src="/uploads/{{$clinic->img_url}}" style="max-height: 100%;max-width: 100%">
                         <!-- description div -->
                         <div class='description'>
                             <!-- description content -->
@@ -81,6 +98,9 @@
             $('#myCarousel').carousel({
                 interval: 3000
             });
+            @if (!is_null($event))
+                $('#myModal').modal('show');
+            @endif
         });
     </script>
 </body>

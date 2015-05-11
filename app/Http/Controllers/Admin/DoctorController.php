@@ -24,13 +24,11 @@ class DoctorController extends AdminController {
 
     public function postCreate(Requests\CreateDoctorRequest $request)
     {
-        $destinationPath = 'doctor';
-        $fileName = $request->file('image')->getClientOriginalName();
-        Doctor::create([
-            'name' => $request->input('name'),
-            'title' => $request->input('title'),
-            'img_url' => $fileName
-        ]);
+        $destinationPath = 'uploads';
+        $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
+        $input = $request->all();
+        $input['img_url'] = $fileName;
+        Doctor::create($input);
         $request->file('image')->move($destinationPath, $fileName);
         return redirect('admin/doctor');
     }

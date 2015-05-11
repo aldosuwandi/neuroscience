@@ -6,6 +6,7 @@ class Doctor extends Model
 {
     protected $table = 'doctor';
 
-    protected $fillable = ['name','title','clinic','image_url'];
+    protected $fillable = ['name','birthday','institution','address','phone','email','education','experience',
+        'organization','training','publication','title','clinic','img_url'];
 
 }

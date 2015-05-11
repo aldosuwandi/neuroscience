@@ -2,6 +2,7 @@
 
 use App\Clinic;
 use App\Home;
+use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 
@@ -11,7 +12,9 @@ class HomeController extends Controller {
     {
         $homes = Home::all();
         $clinics = Clinic::all();
+        $event = Event::where('active','=',1)->first();
         return view('welcome')
+            ->with('event',$event)
             ->with('homes',$homes)
             ->with('clinics',$clinics);
     }

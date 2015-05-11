@@ -8,20 +8,13 @@ use App\Post;
 
 class ClinicController extends Controller {
 
-    public function getIndex()
-    {
-
-    }
-
-
     public function getHome($id,$categoryId = null)
     {
         $categories = Clinic::find($id)->categories()->getResults();
         if (!is_null($categoryId)) {
             $posts = Post::where('category_id','=',$categoryId)->paginate(5);
         } else {
-            $posts = Post::where('category_id','=',$categories[0]->id)->paginate(5);
-            $categoryId = $categories[0]->id;
+            $posts = null;
         }
         return view('blog.home')
             ->with('clinic',Clinic::find($id))

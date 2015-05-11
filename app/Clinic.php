@@ -6,7 +6,7 @@ class Clinic extends Model
 {
     protected $table = 'clinic';
 
-    protected $fillable = ['name','description'];
+    protected $fillable = ['name','description','img_url'];
 
     public function categories()
     {

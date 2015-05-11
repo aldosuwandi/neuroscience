@@ -2,42 +2,21 @@
 
 @section('entries')
     <div class="col-lg-8">
-
-        <!-- Blog Post -->
-
-        <!-- Title -->
-        <h3>Berapa biaya pengobatan untuk tindakan X ?</h3>
-
-        <!-- Author -->
+        <h3>{{$question->question_title}}</h3>
         <p>
-            by <a href="#">Tono Supriyono</a>
+            by {{$question->questioner}}
         </p>
-
+        <p><span class="glyphicon glyphicon-time"></span>{{$question->created_at}}</p>
         <hr>
-
-        <!-- Date/Time -->
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-
+        <p>{{$question->question_text}}</p>
         <hr>
-
-        <!-- Post Content -->
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error, nostrum, aliquid, animi, ut quas placeat totam sunt tempora commodi nihil ullam alias modi dicta saepe minima ab quo voluptatem obcaecati?</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum, dolor quis. Sunt, ut, explicabo, aliquam tenetur ratione tempore quidem voluptates cupiditate voluptas illo saepe quaerat numquam recusandae? Qui, necessitatibus, est!</p>
-
-        <hr>
-
         <h3>Jawaban</h3>
-        <p>
-            by <a href="#">Dr Budiman</a>
-        </p>
-        <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
-
-        <hr>
-
+        <div class="well">
+            <p>
+                by {{$question->answering}}
+            </p>
+            <p style="font-style: italic">{{$question->answer_text}}</p>
+        </div>
     </div>
 
 @stop

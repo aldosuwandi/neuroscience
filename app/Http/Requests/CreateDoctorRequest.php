@@ -24,7 +24,17 @@ class CreateDoctorRequest extends Request {
 		return [
             'name' => 'required',
             'title' => 'required',
-			'image' => 'required'
+			'image' => 'required',
+            'birthday' => 'required',
+            'institution' => 'required',
+            'address' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'education' => 'required',
+            'experience' => 'required',
+            'organization' => 'required',
+            'training' => 'required',
+            'publication' => 'required'
 		];
 	}
 

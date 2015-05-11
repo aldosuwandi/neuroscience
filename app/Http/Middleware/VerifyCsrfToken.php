@@ -5,7 +5,10 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as BaseVerifier;
 
 class VerifyCsrfToken extends BaseVerifier {
 
-	/**
+    private $openRoutes = ['admin/image/upload'];
+
+
+    /**
 	 * Handle an incoming request.
 	 *
 	 * @param  \Illuminate\Http\Request  $request
@@ -14,7 +17,12 @@ class VerifyCsrfToken extends BaseVerifier {
 	 */
 	public function handle($request, Closure $next)
 	{
-		return parent::handle($request, $next);
+        foreach($this->openRoutes as $route) {
+            if ($request->is($route)) {
+                return $next($request);
+            }
+        }
+        return parent::handle($request, $next);
 	}
 
 }

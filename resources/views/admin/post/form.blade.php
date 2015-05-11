@@ -49,11 +49,16 @@
     </div>
     <div class="control-group form-group">
         <div class="controls">
+            {!!Form::label('Text')!!}
+            {!!Form::textarea('description',null,[
+            'class' => 'form-control',
+            'id'=>'text',
+            'required data-validation-required-message'=>'Please enter text.',
+            ])
+            !!}
+
             <label>Text:</label>
-            @include('admin.partials.editormenu')
-            <div id="editor" class="lead"  contenteditable="true"
-                 style="height: 400px;max-height: 400px">
-            </div>
+            <textarea id="edit" name="content" class="froala-editor"></textarea>
         </div>
     </div>
     <div id="success"></div>
@@ -65,6 +70,15 @@
 
 @section('script')
     <script>
+        $('#text').editable({
+            inlineMode: false,
+            imageUploadURL: '/admin/image/upload',
+            imageUploadParams: {
+                id: 'my_editor'
+            }
+
+        });
+
         $('#clinic_id').on('change', function (e) {
             window.location = "/admin/post/create/"+$('#clinic_id').val();
         });
@@ -73,7 +87,7 @@
                 type: 'text',
                 id: 'text',
                 name: 'text',
-                value: $('#editor').html()
+                value: $('#edit').editable('getHTML')
             }).appendTo('form');
             $('form').submit();
         });

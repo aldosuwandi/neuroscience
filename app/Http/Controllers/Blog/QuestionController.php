@@ -35,12 +35,13 @@ class QuestionController extends Controller {
 
     }
 
-    public function getAnswer($questionId,$clinicId)
+    public function getView($clinicId,$questionId)
     {
-        $answer = Question::find($questionId);
-        $categories = Clinic::find($clinicId)->categories();
+        $question = Question::find($questionId);
+        $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.answer')
-            ->with('answer',$answer)
+            ->with('clinic',Clinic::find($clinicId))
+            ->with('question',$question)
             ->with('categories',$categories);
     }
 

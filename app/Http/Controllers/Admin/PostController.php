@@ -61,7 +61,7 @@ class PostController extends AdminController
             'category_id' => $request->input('category_id'),
             'creator' => $request->input('creator'),
             'title' => $request->input('title'),
-            'text' => $this->parseImageAndTransformText($request->input('text'))
+            'text' => $request->input('text')
         ]);
         return redirect('admin/post/list/' . $request->input('clinicId') . '/' . $request->input('categoryId'));
     }
@@ -76,26 +76,5 @@ class PostController extends AdminController
     {
 
     }
-
-    private function parseImageAndTransformText($text)
-    {
-        $dom = new \DOMDocument();
-        $dom->loadHTML($text);
-        $images = $dom->getElementsByTagName('img');
-        foreach ($images as $image) {
-            $src = $image->getAttribute('src');
-            $x = explode(';base64,',$src);
-            $data = base64_decode($x[1]);
-            $im = imagecreatefromstring($data);
-            $filename = 'post/'.uniqid('img_').'.png';
-            imagepng($im,$filename);
-            $newImage = $dom->createElement('img');
-            $newImage->setAttribute('src',url().'/'.$filename);
-            $image->parentNode->replaceChild($newImage,$image);
-        }
-        $html = str_get_html($dom->saveHTML());
-        return $html->find('body', 0)->innertext;
-    }
-
 
 }

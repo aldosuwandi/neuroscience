@@ -3,7 +3,11 @@
 @section('content')
     <h3>Create New Clinic</h3>
     <hr/>
-    {!!Form::open()!!}
+    {!!Form::open([
+    'url'=>'/admin/clinic/create',
+    'method'=>'POST',
+    'files'=> true
+    ])!!}
     <div class="control-group form-group">
         <div class="controls">
         {!!Form::label('name')!!}
@@ -23,8 +27,6 @@
                 'class' => 'form-control',
                 'id'=>'description',
                 'required data-validation-required-message'=>'Please enter clinic name.',
-                'maxlength'=>255,
-                'style'=>'resize:none'
                 ])
             !!}
             <p class="help-block"></p>
@@ -40,3 +42,17 @@
     <button type="submit" class="btn btn-success">Submit</button>
     {!!Form::close()!!}
 @stop
+
+@section('script')
+    <script>
+        $('#description').editable({
+            inlineMode: false,
+            imageUploadURL: '/admin/image/upload',
+            imageUploadParams: {
+                id: 'my_editor'
+            }
+
+        });
+    </script>
+
+@endsection

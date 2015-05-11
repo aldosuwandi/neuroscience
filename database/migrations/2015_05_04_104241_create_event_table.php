@@ -15,8 +15,10 @@ class CreateEventTable extends Migration {
         Schema::create('event', function(Blueprint $table)
         {
             $table->increments('id');
+            $table->string('name');
             $table->string('img_url');
-            $table->string('link');
+            $table->boolean('active')->nullable();
+            $table->longText('text');
             $table->timestamps();
 
         });

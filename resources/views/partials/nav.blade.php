@@ -19,10 +19,13 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
+                    <a href="/events">Event</a>
+                </li>
+                <li>
                     <a href="/schedule">Jadwal Praktek</a>
                 </li>
                 <li>
-                    <a href="/team">Dokter</a>
+                    <a href="/doctors">Dokter</a>
                 </li>
                 <li>
                     <a href="http://www.siloamhospitals.com/contact-us">Contact</a>

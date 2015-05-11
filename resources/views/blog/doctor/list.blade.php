@@ -9,8 +9,12 @@
         </div>
         @foreach($doctors as $doctor)
             <div class="col-lg-4 col-sm-6 text-center">
-                <img class="img-circle img-responsive img-center" src="/doctor/{{$doctor->img_url}}" alt="">
-                <h3>{{$doctor->name}}</h3>
+                <img class="img-circle img-responsive img-center" src="/uploads/{{$doctor->img_url}}" alt="">
+                <h3>
+                    <a href="/doctors/view/{{$doctor->id}}">
+                        {{$doctor->name}}
+                    </a>
+                </h3>
                 <p>{{$doctor->title}}</p>
             </div>
         @endforeach

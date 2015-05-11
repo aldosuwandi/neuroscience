@@ -25,12 +25,13 @@ class EventController extends AdminController {
 
     public function postCreate(CreateEventRequest $request)
     {
-        $destinationPath = 'event';
-        $fileName = $request->file('image')->getClientOriginalName();
+        $destinationPath = 'uploads';
+        $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
         Event::create([
             'name' => $request->input('name'),
-            'link' => $request->input('link'),
-            'img_url' => $fileName
+            'img_url' => $fileName,
+            'text' => $request->input('text'),
+            'active' => false
         ]);
         $request->file('image')->move($destinationPath, $fileName);
         return redirect('/admin/event');
@@ -40,6 +41,22 @@ class EventController extends AdminController {
     {
         Event::find($id)->delete();
         return $this->getList();
+    }
+
+    public function getActivate($id)
+    {
+        $event = Event::find($id);
+        $event->active = true;
+        $event->save();
+        return redirect('/admin/event');
+    }
+
+    public function getDeactive($id)
+    {
+        $event = Event::find($id);
+        $event->active = false;
+        $event->save();
+        return redirect('/admin/event');
     }
 
 }

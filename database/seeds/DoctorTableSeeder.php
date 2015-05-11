@@ -13,7 +13,17 @@ class DoctorTableSeeder extends Seeder {
             Doctor::create([
                 'name' => 'Dr '.$faker->firstName.' '.$faker->lastName,
                 'title' => 'Title Doctor '.$i,
-                'img_url' => 'doctor1.png'
+                'img_url' => 'doctor1.png',
+                'birthday' => $faker->date(),
+                'institution' => 'Siloam',
+                'address' => $faker->address,
+                'phone' => $faker->phoneNumber,
+                'email' => $faker->email,
+                'education' => $faker->text(),
+                'experience' => $faker->text(),
+                'organization' => $faker->text(),
+                'training' => $faker->text(),
+                'publication' => $faker->text(),
             ]);
         }
 

@@ -7,10 +7,10 @@
         </h1>
         @foreach($questions as $question)
             <div class="article" style="text-align:justify">
-                <h4> <a href="/question/view/{{$question->id}}">{{$question->question_title}}</a></h4>
+                <h4> <a href="/question/view/{{$clinic->id}}/{{$question->id}}">{{$question->question_title}}</a></h4>
                 <p>oleh {{$question->questioner}} | <span class="glyphicon glyphicon-time"></span>  {{$question->created_at}}</p>
                 <p><?php echo substr($question->question_text,0,1000).'....'; ?></p>
-                <a class="btn btn-primary btn-sm" href="/question/view/{{$question->id}}">Lihat
+                <a class="btn btn-primary btn-sm" href="/question/view/{{$clinic->id}}/{{$question->id}}">Lihat
                     <span class="glyphicon glyphicon-chevron-right"></span>
                 </a>
                 <hr>

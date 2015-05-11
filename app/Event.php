@@ -6,6 +6,6 @@ class Event extends Model
 {
     protected $table = 'event';
 
-    protected $fillable = ['img_url','link'];
+    protected $fillable = ['name','img_url','text'];
 
 }

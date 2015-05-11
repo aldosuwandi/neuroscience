@@ -9,7 +9,7 @@ class PostTableSeeder extends Seeder {
     {
         $faker = Faker\Factory::create();
         DB::table('post')->delete();
-        for($j = 1; $j <= 15 ; $j++) {
+        for($j = 1; $j <= 6 ; $j++) {
             for($k = 1; $k <= 5 ; $k++) {
                 Post::create([
                     'category_id' => $j,

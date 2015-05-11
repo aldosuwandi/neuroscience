@@ -23,7 +23,8 @@ class CreateEventRequest extends Request {
 	{
 		return [
             'name' => 'required',
-			'image' => 'required'
+			'image' => 'required',
+            'text' => 'required'
 		];
 	}
 

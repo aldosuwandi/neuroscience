@@ -25,8 +25,8 @@ class HomeController extends AdminController {
 
     public function postCreate(CreateHomeRequest $request)
     {
-        $destinationPath = 'banner';
-        $fileName = $request->file('image')->getClientOriginalName();
+        $destinationPath = 'uploads';
+        $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
         Home::create([
             'img_url' => $fileName
         ]);

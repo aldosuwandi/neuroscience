@@ -10,8 +10,7 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Image URL</th>
-                <th class="col-sm-4">Link</th>
+                <th>Date Created</th>
                 <th class="col-sm-3">Action</th>
             </tr>
             </thead>
@@ -19,9 +18,13 @@
             @foreach($events as $event)
                 <tr>
                     <td>{{$event->name}}</td>
-                    <td>{{$event->img_url}}</td>
-                    <td>{{$event->link}}</td>
+                    <td>{{$event->created_at}}</td>
                     <td>
+                        @if(!$event->active)
+                            <a class="btn btn-sm btn-info" href="/admin/event/activate/{{$event->id}}">Activate</a>
+                        @else
+                            <a class="btn btn-sm btn-default" href="/admin/event/deactivate/{{$event->id}}">Deactivate</a>
+                        @endif
                         <a class="btn btn-sm btn-danger">Edit</a>
                         <a class="btn btn-sm btn-success">Delete</a>
                     </td>

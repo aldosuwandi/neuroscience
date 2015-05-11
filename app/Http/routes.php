@@ -29,6 +29,7 @@ Route::controllers([
     'admin/question' => 'Admin\QuestionController',
     'admin/event' => 'Admin\EventController',
     'admin/schedule' => 'Admin\ScheduleController',
+    'admin/image' => 'Admin\ImageController',
 
     //BLOG
     'clinic' => 'Blog\ClinicController',
@@ -36,5 +37,6 @@ Route::controllers([
     'post' => 'Blog\PostController',
     'question' => 'Blog\QuestionController',
     'schedule' => 'Blog\ScheduleController',
-    'team' => 'Blog\DoctorController'
+    'doctors' => 'Blog\DoctorController',
+    'events'=> 'Blog\EventController'
 ]);
