@@ -16,9 +16,9 @@
     <div class="well">
         <h4>Categories</h4>
         <div class="row">
-            <ul id="tree1">
+            <ul id="category_tree">
                 @foreach($categories as $category)
-                    <li><a href="/clinic/home/{{$clinic->id}}/{{$category->id}}">{{$category->name}}</a>
+                    <li value="{{$category->id}}"><a href="/clinic/home/{{$clinic->id}}/{{$category->id}}">{{$category->name}}</a>
                         <span class="badge pull-right">{!! count($category->posts()->getResults()); !!}</span>
                     <ul>
                         @foreach($category->posts()->getResults() as $post)
@@ -29,6 +29,10 @@
                     </ul>
                     </li>
                 @endforeach
+                <li>
+                    <i class="indicator glyphicon glyphicon-question-sign"></i>
+                    <a href="/question/list/{{$clinic->id}}">Tanya Jawab</a>
+                </li>
             </ul>
         </div>
     </div>

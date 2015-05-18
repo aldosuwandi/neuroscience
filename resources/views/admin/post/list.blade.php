@@ -44,7 +44,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="/admin/post/create">Create</a>
+    <a class="btn btn-primary" href="/admin/post/create?clinic=1">Create</a>
     <hr/>
     <div class="table-responsive">
         @if (!empty($posts))
@@ -64,8 +64,8 @@
                     <td>{{$post->creator}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger">Edit</a>
-                        <a class="btn btn-sm btn-success">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="/admin/post/create/{{$post->id}}?clinic={{$post->category->clinic->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="/admin/post/delete/{{$post->id}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

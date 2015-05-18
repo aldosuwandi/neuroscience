@@ -16,40 +16,54 @@ class ClinicController extends AdminController {
         return view('admin.clinic.list')->with('clinics',$clinics);
     }
 
-    public function getCreate()
+    public function getCreate($id = null)
     {
-        $clinic = new Clinic();
+        if(!is_null($id)) {
+            $clinic = Clinic::find($id);
+        } else {
+            $clinic = new Clinic();
+        }
         return view('admin.clinic.form')->with('clinic',$clinic);
     }
 
     public function postCreate(CreateClinicRequest $request)
     {
         $destinationPath = 'uploads';
-        $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
-        $clinic = new Clinic();
+        $fileName = 'default-clinic.jpg';
+        if ($request->hasFile('image')) {
+            $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($destinationPath, $fileName);
+        }
         Clinic::create([
             'name' => $request->input('name'),
             'img_url' => $fileName,
             'description' => $request->input('description')
         ]);
-        $request->file('image')->move($destinationPath, $fileName);
+        \Cache::forever('clinics',Clinic::all());
         return redirect('admin/clinic');
     }
 
     public function getDelete($id)
     {
         Clinic::find($id)->delete();
+        \Cache::forever('clinics',Clinic::all());
         return $this->getList();
     }
 
-    public function postEdit(CreateClinicRequest $request)
+    public function postEdit(Request $request)
     {
-        $id = $request->input('id');
-        $clinic = Clinic::find($id);
+        $clinic = Clinic::find($request->input('id'));
+        $destinationPath = 'uploads';
+        if ($request->hasFile('image')) {
+            $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($destinationPath, $fileName);
+            $clinic->img_url = $fileName;
+        }
         $clinic->name = $request->input('name');
         $clinic->description = $request->input('description');
         $clinic->save();
-        return $this->getList();
+        \Cache::forever('clinics',Clinic::all());
+        return redirect('admin/clinic');
     }
 
 

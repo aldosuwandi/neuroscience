@@ -25,8 +25,8 @@
                         @else
                             <a class="btn btn-sm btn-default" href="/admin/event/deactivate/{{$event->id}}">Deactivate</a>
                         @endif
-                        <a class="btn btn-sm btn-danger">Edit</a>
-                        <a class="btn btn-sm btn-success">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="/admin/event/create/{{$event->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="/admin/event/delete/{{$event->id}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

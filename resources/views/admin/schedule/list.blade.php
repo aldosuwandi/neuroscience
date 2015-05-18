@@ -24,8 +24,8 @@
                         <td>{{$schedule->day}}</td>
                         <td>{{$schedule->time}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger">Edit</a>
-                            <a class="btn btn-sm btn-success">Delete</a>
+                            <a class="btn btn-sm btn-danger" href="/admin/schedule/create/{{$schedule->id}}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="/admin/schedule/delete/{{$schedule->id}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

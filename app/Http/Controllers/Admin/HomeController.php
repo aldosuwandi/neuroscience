@@ -31,12 +31,14 @@ class HomeController extends AdminController {
             'img_url' => $fileName
         ]);
         $request->file('image')->move($destinationPath, $fileName);
+        \Cache::forever('homes',Home::all());
         return redirect('admin/home');
     }
 
     public function getDelete($id)
     {
         Home::find($id)->delete();
+        \Cache::forever('homes',Home::all());
         return $this->getList();
     }
 

@@ -9,7 +9,8 @@
         </div>
         @foreach($doctors as $doctor)
             <div class="col-lg-4 col-sm-6 text-center">
-                <img class="img-circle img-responsive img-center" src="/uploads/{{$doctor->img_url}}" alt="">
+                <img class="img-circle img-responsive img-center" src="/uploads/{{$doctor->img_url}}" alt=""
+                     style="width: 200px;height:250px">
                 <h3>
                     <a href="/doctors/view/{{$doctor->id}}">
                         {{$doctor->name}}

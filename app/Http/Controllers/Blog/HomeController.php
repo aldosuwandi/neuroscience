@@ -10,8 +10,14 @@ class HomeController extends Controller {
 
     public function getIndex()
     {
-        $homes = Home::all();
-        $clinics = Clinic::all();
+        $homes = \Cache::rememberForever('homes', function()
+        {
+            return Home::all();
+        });
+        $clinics = \Cache::rememberForever('clinics', function()
+        {
+            return Clinic::all();
+        });
         $event = Event::where('active','=',1)->first();
         return view('welcome')
             ->with('event',$event)

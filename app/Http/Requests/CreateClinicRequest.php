@@ -23,7 +23,8 @@ class CreateClinicRequest extends Request {
 	{
 		return [
 			'name' => 'required',
-            'image' => 'required'
+            'image' => 'required',
+            'description' => 'required'
 		];
 	}
 

@@ -3,11 +3,20 @@
 @section('content')
     <h3>Create New Doctor</h3>
     <hr/>
-    {!!Form::open([
-    'url'=>'/admin/doctor/create',
-    'method'=>'POST',
-    'files'=> true
-    ])!!}
+    @if (is_null($doctor->id))
+        {!!Form::open([
+            'url'=>'/admin/doctor/create',
+            'method'=>'POST',
+            'files'=> true
+        ])!!}
+    @else
+        {!!Form::open([
+            'url'=>'/admin/doctor/edit',
+            'method'=>'POST',
+            'files'=> true
+        ])!!}
+    @endif
+    {!!Form::hidden('id',$doctor->id,[])!!}
     <div class="row">
         <div class="col-sm-6">
             <div class="control-group form-group">
@@ -19,10 +28,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('name')!!}
-                    {!!Form::text('name',null,[
-                    'class' => 'form-control',
-                    'id'=>'name',
-                    'required data-validation-required-message'=>'Please enter doctor name.'
+                    {!!Form::text('name',$doctor->name,[
+                        'class' => 'form-control',
+                        'id'=>'name',
+                        'required data-validation-required-message'=>'Please enter doctor name.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -31,10 +40,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('title')!!}
-                    {!!Form::text('title',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor title.'
+                    {!!Form::text('title',$doctor->title,[
+                        'class' => 'form-control',
+                        'id'=>'title',
+                        'required data-validation-required-message'=>'Please enter doctor title.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -43,10 +52,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('birthday')!!}
-                    {!!Form::text('birthday',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor birthday.'
+                    {!!Form::text('birthday',$doctor->birthday,[
+                        'class' => 'form-control',
+                        'id'=>'title',
+                        'required data-validation-required-message'=>'Please enter doctor birthday.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -57,10 +66,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('institution')!!}
-                    {!!Form::text('institution',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor institution.'
+                    {!!Form::text('institution',$doctor->institution,[
+                        'class' => 'form-control',
+                        'id'=>'institution',
+                        'required data-validation-required-message'=>'Please enter doctor institution.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -69,10 +78,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('address')!!}
-                    {!!Form::text('address',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor address.'
+                    {!!Form::text('address',$doctor->address,[
+                        'class' => 'form-control',
+                        'id'=>'address',
+                        'required data-validation-required-message'=>'Please enter doctor address.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -81,10 +90,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('phone')!!}
-                    {!!Form::text('phone',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor phone.'
+                    {!!Form::text('phone',$doctor->phone,[
+                        'class' => 'form-control',
+                        'id'=>'phone',
+                        'required data-validation-required-message'=>'Please enter doctor phone.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -93,10 +102,10 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('email')!!}
-                    {!!Form::email('email',null,[
-                    'class' => 'form-control',
-                    'id'=>'title',
-                    'required data-validation-required-message'=>'Please enter doctor birthday.'
+                    {!!Form::email('email',$doctor->email,[
+                        'class' => 'form-control',
+                        'id'=>'email',
+                        'required data-validation-required-message'=>'Please enter doctor birthday.'
                     ])
                     !!}
                     <p class="help-block"></p>
@@ -108,7 +117,9 @@
     <div class="control-group form-group">
         <div class="controls">
             <label for="education">Education</label>
-            <textarea id="education" name="education" class="form-doctor"></textarea>
+            <textarea id="education" name="education" class="form-doctor">
+                <?php echo $doctor->education; ?>
+            </textarea>
         </div>
         {!!$errors->first('education', '<p class="help-block">:message</p>')!!}
     </div>
@@ -116,7 +127,9 @@
     <div class="control-group form-group">
         <div class="controls">
             <label for="experience">Experience</label>
-            <textarea id="experience" name="experience" class="form-doctor"></textarea>
+            <textarea id="experience" name="experience" class="form-doctor">
+                <?php echo $doctor->experience; ?>
+            </textarea>
         </div>
         {!!$errors->first('experience', '<p class="help-block">:message</p>')!!}
     </div>
@@ -124,7 +137,9 @@
     <div class="control-group form-group">
         <div class="controls">
             <label for="organization">Organization</label>
-            <textarea id="organization" name="organization" class="form-doctor"></textarea>
+            <textarea id="organization" name="organization" class="form-doctor">
+                <?php echo $doctor->organization; ?>
+            </textarea>
         </div>
         {!!$errors->first('organization', '<p class="help-block">:message</p>')!!}
     </div>
@@ -132,7 +147,9 @@
     <div class="control-group form-group">
         <div class="controls">
             <label for="training">Training</label>
-            <textarea id="training" name="training" class="form-doctor"></textarea>
+            <textarea id="training" name="training" class="form-doctor">
+                <?php echo $doctor->training; ?>
+            </textarea>
         </div>
         {!!$errors->first('training', '<p class="help-block">:message</p>')!!}
     </div>
@@ -140,7 +157,9 @@
     <div class="control-group form-group">
         <div class="controls">
             <label for="publication">Publication</label>
-            <textarea id="publication" name="publication" class="form-doctor"></textarea>
+            <textarea id="publication" name="publication" class="form-doctor">
+                 <?php echo $doctor->publication; ?>
+            </textarea>
         </div>
         {!!$errors->first('publication', '<p class="help-block">:message</p>')!!}
     </div>

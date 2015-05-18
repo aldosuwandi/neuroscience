@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Admin;
 use App\Category;
+use App\Doctor;
 use App\Http\Requests;
 use App\Post;
 use Illuminate\Http\Request;
@@ -40,16 +41,23 @@ class PostController extends AdminController
             ->with('posts', $posts);
     }
 
-    public function getCreate($clinicId = null)
+    public function getCreate($id = null)
     {
-        $post = new Post();
         $clinics = Clinic::all();
         $categories = array();
-        if (!is_null($clinicId)) {
-            $categories = Clinic::find($clinicId)->categories()->getResults();
+        $clinicId = null;
+        if (!is_null($id)) {
+            $post = Post::find($id);
+        } else {
+            $post = new Post();
+        }
+        if (\Request::has('clinic')) {
+            $categories = Clinic::find(\Request::input('clinic'))->categories()->getResults();
+            $clinicId = \Request::input('clinic');
         }
         return view('admin.post.form')
             ->with('post', $post)
+            ->with('creators',Doctor::all())
             ->with('clinics', $clinics)
             ->with('clinicId', $clinicId)
             ->with('categories', $categories);
@@ -57,24 +65,44 @@ class PostController extends AdminController
 
     public function postCreate(Requests\CreatePostRequest $request)
     {
+        $destinationPath = 'uploads';
+        $fileName = null;
+        if ($request->hasFile('image')) {
+            $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($destinationPath, $fileName);
+        }
         Post::create([
             'category_id' => $request->input('category_id'),
             'creator' => $request->input('creator'),
             'title' => $request->input('title'),
-            'text' => $request->input('text')
+            'text' => $request->input('text'),
+            'img_url' => $fileName
         ]);
-        return redirect('admin/post/list/' . $request->input('clinicId') . '/' . $request->input('categoryId'));
+        return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 
     public function getDelete($id)
     {
         Post::find($id)->delete();
-        return $this->getList();
+        return redirect('admin/post/list/1/1');
     }
 
     public function postEdit(Requests\CreatePostRequest $request)
     {
-
+        $post = Post::find($request->input('id'));
+        $destinationPath = 'uploads';
+        $fileName = null;
+        if ($request->hasFile('image')) {
+            $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
+            $request->file('image')->move($destinationPath, $fileName);
+            $post->img_url = $fileName;
+        }
+        $post->category_id = $request->input('category_id');
+        $post->creator = $request->input('creator');
+        $post->title = $request->input('title');
+        $post->text = $request->input('text');
+        $post->save();
+        return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 
 }

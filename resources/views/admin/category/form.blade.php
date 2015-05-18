@@ -5,8 +5,20 @@
     <hr/>
     <div class="row">
         <div class="col-sm-5">
-            {!!Form::open()!!}
-            @if(is_null($clinicId))
+            @if (is_null($category->id))
+                {!!Form::open([
+                    'url'=>'/admin/category/create',
+                    'method'=>'POST'
+                ])!!}
+            @else
+                {!!Form::open([
+                    'url'=>'/admin/category/edit',
+                    'method'=>'POST'
+                ])!!}
+            @endif
+            {!!Form::hidden('id',$category->id,[])!!}
+            {!!Form::hidden('clinicId',$clinicId,[])!!}
+            @if(!empty($clinics))
                 <div class="control-group form-group">
                     <label for="clinic">Select Clinic:</label>
                     <select class="form-control" id="clinic_id" name="clinic_id">
@@ -19,7 +31,7 @@
             <div class="control-group form-group">
                 <div class="controls">
                     {!!Form::label('name')!!}
-                    {!!Form::text('name',null,[
+                    {!!Form::text('name',$category->name,[
                     'class' => 'form-control',
                     'id'=>'name',
                     'required data-validation-required-message'=>'Please enter category name.'

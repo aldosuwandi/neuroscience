@@ -16,9 +16,13 @@ class ScheduleController extends AdminController {
         return view('admin.schedule.list')->with('schedules',$schedules);
     }
 
-    public function getCreate()
+    public function getCreate($id = null)
     {
-        $schedule = new Schedule();
+        if (is_null($id)) {
+            $schedule = new Schedule();
+        } else {
+            $schedule = Schedule::find($id);
+        }
         return view('admin.schedule.form')->with('schedule',$schedule);
     }
 
@@ -31,12 +35,18 @@ class ScheduleController extends AdminController {
     public function getDelete($id)
     {
         Schedule::find($id)->delete();
-        return $this->getList();
+        return redirect('/admin/schedule/list');
     }
 
     public function postEdit(Requests\CreateScheduleRequest $request)
     {
-
+        $schedule = Schedule::find($request->input('id'));
+        $schedule->name = $request->input('name');
+        $schedule->clinic = $request->input('clinic');
+        $schedule->day = $request->input('day');
+        $schedule->time = $request->input('time');
+        $schedule->save();
+        return redirect('/admin/schedule/list');
     }
 
 

@@ -22,8 +22,8 @@
                     <td>{{$doctor->title}}</td>
                     <td>{{$doctor->img_url}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger">Edit</a>
-                        <a class="btn btn-sm btn-success">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="/admin/doctor/create/{{$doctor->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="/admin/doctor/delete/{{$doctor->id}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

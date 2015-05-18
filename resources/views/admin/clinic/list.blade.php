@@ -20,8 +20,8 @@
                     <td>{{$clinic->name}}</td>
                     <td>{{$clinic->img_url}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger">Edit</a>
-                        <a class="btn btn-sm btn-success">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="/admin/clinic/create/{{$clinic->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="/admin/clinic/delete/{{$clinic->id}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

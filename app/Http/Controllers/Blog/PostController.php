@@ -14,6 +14,7 @@ class PostController extends Controller {
         return view('blog.post')
             ->with('post',$post)
             ->with('clinic',$clinic)
+            ->with('categoryId',$post->category->id)
             ->with('categories',$categories);
     }
 

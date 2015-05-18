@@ -1,7 +1,7 @@
 @extends('admin')
 
 @section('content')
-    <h3>Question List</h3>
+    <h3>Question List <br/><small>@if($clinic){{$clinic->name}}@endif</small></h3>
     <hr/>
     <div class="row">
         <div class="col-md-2">
@@ -11,11 +11,12 @@
                     Clinic
                     <span class="caret"></span>
                 </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="width: 300px">
                     @foreach($clinics as $clinic)
                         <li role="presentation">
                             <a role="menuitem" tabindex="-1" href="/admin/question/list/{{$clinic->id}}">
                                 {{$clinic->name}}
+                                <span class="badge pull-right">{{$clinic->unAnswered()}}</span>
                             </a>
                         </li>
                     @endforeach
@@ -32,7 +33,6 @@
                 <tr>
                     <th class="col-sm-3">Title</th>
                     <th class="col-sm-2">Date</th>
-                    <th class="col-sm-2">Answered</th>
                     <th class="col-sm-2">Action</th>
                 </tr>
                 </thead>
@@ -41,9 +41,12 @@
                     <tr>
                         <td>{{$question->question_title}}</td>
                         <td>{{$question->created_at}}</td>
-                        <td>{{$question->published}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger" href="/admin/question/edit">Answer</a>
+                            @if (!$question->published)
+                                <a class="btn btn-sm btn-danger" href="/admin/question/edit/{{$question->id}}">Answer</a>
+                            @else
+                                <a class="btn btn-sm btn-info" href="/admin/question/edit/{{$question->id}}">Edit Answer</a>
+                            @endif
                             <a class="btn btn-sm btn-success">Delete</a>
                         </td>
                     </tr>

@@ -202,7 +202,7 @@ return [
 		'View'      => 'Illuminate\Support\Facades\View',
         'Captcha' => 'Mews\Captcha\Facades\Captcha',
         'Form' => 'Illuminate\Html\FormFacade',
-        'Html' => 'Illuminate\Html\HtmlFacade'
+        'Html' => 'Illuminate\Html\HtmlFacade',
 
 
     ],

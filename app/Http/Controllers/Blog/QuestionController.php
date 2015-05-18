@@ -15,6 +15,7 @@ class QuestionController extends Controller {
             ->paginate(10);
         $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.question')
+            ->with('categoryId',null)
             ->with('clinic',Clinic::find($clinicId))
             ->with('categories',$categories)
             ->with('questions',$questions);
@@ -25,6 +26,7 @@ class QuestionController extends Controller {
         $question = new Question();
         $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.form')
+            ->with('categoryId',null)
             ->with('clinic',Clinic::find($clinicId))
             ->with('question',$question)
             ->with('categories',$categories);
@@ -40,6 +42,7 @@ class QuestionController extends Controller {
         $question = Question::find($questionId);
         $categories = Clinic::find($clinicId)->categories()->getResults();
         return view('blog.qa.answer')
+            ->with('categoryId',null)
             ->with('clinic',Clinic::find($clinicId))
             ->with('question',$question)
             ->with('categories',$categories);

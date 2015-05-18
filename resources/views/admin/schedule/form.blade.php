@@ -5,11 +5,22 @@
     <hr/>
     <div class="row">
         <div class="col-sm-5">
-        {!!Form::open()!!}
+        @if (is_null($schedule->id))
+            {!!Form::open([
+                'url'=>'/admin/schedule/create',
+                'method'=>'POST'
+            ])!!}
+        @else
+            {!!Form::open([
+            'url'=>'/admin/schedule/edit',
+                'method'=>'POST'
+            ])!!}
+        @endif
+        {!!Form::hidden('id',$schedule->id,[])!!}
         <div class="control-group form-group">
             <div class="controls">
                 {!!Form::label('Doctor name')!!}
-                {!!Form::text('name',null,[
+                {!!Form::text('name',$schedule->name,[
                     'class' => 'form-control',
                     'id'=>'name',
                     'required data-validation-required-message'=>'Please enter doctor name.'
@@ -21,7 +32,7 @@
         <div class="control-group form-group">
             <div class="controls">
                 {!!Form::label('clinic')!!}
-                {!!Form::text('clinic',null,[
+                {!!Form::text('clinic',$schedule->clinic,[
                     'class' => 'form-control',
                     'id'=>'clinic',
                     'required data-validation-required-message'=>'Please enter clinic.'
@@ -33,7 +44,7 @@
         <div class="control-group form-group">
             <div class="controls">
                 {!!Form::label('day')!!}
-                {!!Form::text('day',null,[
+                {!!Form::text('day',$schedule->day,[
                     'class' => 'form-control',
                     'id'=>'day',
                     'required data-validation-required-message'=>'Please enter clinic.'
@@ -45,7 +56,7 @@
         <div class="control-group form-group">
             <div class="controls">
                 {!!Form::label('time')!!}
-                {!!Form::text('time',null,[
+                {!!Form::text('time',$schedule->time,[
                     'class' => 'form-control',
                     'id'=>'time',
                     'required data-validation-required-message'=>'Please enter time.'

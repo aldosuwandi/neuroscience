@@ -21,10 +21,11 @@ class QuestionController extends AdminController {
         return view('admin.question.list')
             ->with('clinics',$clinics)
             ->with('clinicId',$clinicId)
+            ->with('clinic',Clinic::find($clinicId))
             ->with('questions',$questions);
     }
 
-    public function getCreate($id)
+    public function getEdit($id)
     {
         $question = Question::find($id);
         return view('admin.question.form')->with('question',$question);
@@ -37,9 +38,17 @@ class QuestionController extends AdminController {
         return $this->getList();
     }
 
-    public function postEdit(CreateAnswerRequest $request)
+    public function postEdit(Requests\CreateAnswerRequest $request)
     {
-
+        $question = Question::find($request->input('id'));
+        $question->questioner = $request->input('questioner');
+        $question->question_title = $request->input('question_title');
+        $question->question_text = $request->input('question_text');
+        $question->answering = $request->input('answering');
+        $question->answer_text = $request->input('answer_text');
+        $question->published = true;
+        $question->save();
+        return redirect('/admin/question/list/'.$question->clinic->id);
     }
 
 

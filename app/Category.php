@@ -18,4 +18,5 @@ class Category extends Model
         return $this->hasOne('App\Clinic','id','clinic_id');
     }
 
+
 }
