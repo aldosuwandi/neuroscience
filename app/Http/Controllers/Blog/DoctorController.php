@@ -12,9 +12,12 @@ class DoctorController extends Controller {
         return view('blog.doctor.list')->with('doctors',$doctors);
     }
 
-    public function getView($id)
+    public function getView($id,$doctorSlug = null)
     {
         $doctor = Doctor::find($id);
+        if (is_null($doctorSlug) || $doctorSlug != str_slug($doctor->name)) {
+            return redirect('/doctors/view/'.$id.'/'.str_slug($doctor->name));
+        }
         return view('blog.doctor.detail')->with('doctor',$doctor);
     }
 

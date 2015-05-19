@@ -17,7 +17,6 @@ class AuthController extends Controller {
     {
         $this->user = $user;
         $this->auth = $auth;
-
         $this->middleware('guest', ['except' => ['getLogout']]);
     }
 
@@ -52,7 +51,7 @@ class AuthController extends Controller {
     {
         $this->auth->logout();
 
-        return redirect('/');
+        return redirect('/auth/login');
     }
 
 

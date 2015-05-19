@@ -16,6 +16,9 @@ class CreateHome extends Migration {
         {
             $table->increments('id');
             $table->string('img_url');
+            $table->string('link');
+            $table->string('title');
+            $table->string('caption');
             $table->timestamps();
         });
 	}

@@ -19,6 +19,7 @@ class CreatePost extends Migration {
             $table->foreign('category_id')->references('id')->on('category')->onDelete('cascade');
             $table->string('creator');
             $table->string('title');
+            $table->string('slug');
             $table->string('img_url')->nullable();
             $table->longText('text');
             $table->timestamps();

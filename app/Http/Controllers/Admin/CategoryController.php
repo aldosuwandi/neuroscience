@@ -3,6 +3,7 @@ use App\Category;
 use App\Clinic;
 use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class CategoryController extends AdminController {
 
@@ -51,6 +52,7 @@ class CategoryController extends AdminController {
         Category::create($request->all());
         \Cache::forever('categories_'.$request->input('clinic_id'),
             Clinic::find($request->input('clinic_id'))->categories);
+        Flash::success('Category baru telah dibuat');
         return redirect('admin/category/list/'.$request->input('clinic_id'));
     }
 
@@ -59,6 +61,7 @@ class CategoryController extends AdminController {
         $clinicId = Category::find($id)->clinic->id;
         Category::find($id)->delete();
         \Cache::forever('categories_'.$clinicId,Clinic::find($clinicId)->categories);
+        Flash::success('Category telah dihapus');
         return redirect('admin/category/list/'.$clinicId);
     }
 
@@ -66,9 +69,11 @@ class CategoryController extends AdminController {
     {
         $category = Category::find($request->input('id'));
         $category->name = $request->input('name');
+        $category->slug = str_slug($request->input('name'));
         $category->save();
         \Cache::forever('categories_'.$request->input('clinicId'),
             Clinic::find($request->input('clinicId'))->categories);
+        Flash::success('Category telah diperbaharui');
         return redirect('admin/category/list/'.$request->input('clinicId'));
     }
 

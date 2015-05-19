@@ -149,8 +149,11 @@ return [
         /*
          *  External App Service
          */
+        'Laracasts\Flash\FlashServiceProvider',
         'Mews\Captcha\CaptchaServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Roumen\Sitemap\SitemapServiceProvider',
+
 
 
     ],
@@ -200,10 +203,10 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
-        'Captcha' => 'Mews\Captcha\Facades\Captcha',
-        'Form' => 'Illuminate\Html\FormFacade',
-        'Html' => 'Illuminate\Html\HtmlFacade',
-
+        'Captcha'   => 'Mews\Captcha\Facades\Captcha',
+        'Form'      => 'Illuminate\Html\FormFacade',
+        'Html'      => 'Illuminate\Html\HtmlFacade',
+        'Flash'     => 'Laracasts\Flash\Flash',
 
     ],
 

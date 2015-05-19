@@ -18,5 +18,10 @@ class Category extends Model
         return $this->hasOne('App\Clinic','id','clinic_id');
     }
 
+    public static function create(array $attributes)
+    {
+        $attributes['slug'] = str_slug($attributes['name']);
+        parent::create($attributes);
+    }
 
 }

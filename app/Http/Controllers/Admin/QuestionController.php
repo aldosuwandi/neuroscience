@@ -2,6 +2,7 @@
 use App\Clinic;
 use App\Http\Requests;
 use App\Question;
+use Laracasts\Flash\Flash;
 
 class QuestionController extends AdminController {
 
@@ -13,15 +14,17 @@ class QuestionController extends AdminController {
     public function getList($clinicId = null)
     {
         $clinics = Clinic::all();
-        $questions = array();
-        if (!is_null($clinicId)) {
-            $questions = Question::where('clinic_id','=',$clinicId)
-                ->orderBy('published')->paginate(10);
+        if (is_null($clinicId)) {
+            $clinicId = 1;
         }
+        $questions = Question::where('clinic_id','=',$clinicId)
+            ->orderBy('published')->paginate(10);
+        $clinic = Clinic::find($clinicId);
+        Flash::info('Ada mempunyai '.$clinic->unAnswered().' pertanyaan yang belum dijawab');
         return view('admin.question.list')
             ->with('clinics',$clinics)
             ->with('clinicId',$clinicId)
-            ->with('clinic',Clinic::find($clinicId))
+            ->with('clinic',$clinic)
             ->with('questions',$questions);
     }
 
@@ -34,8 +37,11 @@ class QuestionController extends AdminController {
 
     public function getDelete($id)
     {
-        Question::find($id)->delete();
-        return $this->getList();
+        $question = Question::find($id);
+        $clinicId = $question->clinic->id;
+        $question->delete();
+        Flash::success('Pertanyaan telah dihapus');
+        return redirect('/admin/question/list/'.$clinicId);
     }
 
     public function postEdit(Requests\CreateAnswerRequest $request)
@@ -48,6 +54,7 @@ class QuestionController extends AdminController {
         $question->answer_text = $request->input('answer_text');
         $question->published = true;
         $question->save();
+        Flash::success('Pertanyaan telah dijawab');
         return redirect('/admin/question/list/'.$question->clinic->id);
     }
 

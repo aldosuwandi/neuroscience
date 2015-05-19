@@ -2,6 +2,7 @@
 use App\Http\Requests;
 use App\Schedule;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class ScheduleController extends AdminController {
 
@@ -29,12 +30,14 @@ class ScheduleController extends AdminController {
     public function postCreate(Requests\CreateScheduleRequest $request)
     {
         Schedule::create($request->all());
+        Flash::success('Jadwal baru telah dibuat');
         return redirect('admin/schedule');
     }
 
     public function getDelete($id)
     {
         Schedule::find($id)->delete();
+        Flash::success('Jadwal baru telah dihapus');
         return redirect('/admin/schedule/list');
     }
 
@@ -46,6 +49,7 @@ class ScheduleController extends AdminController {
         $schedule->day = $request->input('day');
         $schedule->time = $request->input('time');
         $schedule->save();
+        Flash::success('Jadwal telah diperbaharui');
         return redirect('/admin/schedule/list');
     }
 

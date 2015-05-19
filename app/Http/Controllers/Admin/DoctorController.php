@@ -2,7 +2,8 @@
 use App\Doctor;
 use App\Http\Requests;
 use Illuminate\Http\Request;
-use PhpParser\Comment\Doc;
+use Laracasts\Flash\Flash;
+
 
 class DoctorController extends AdminController {
 
@@ -35,12 +36,14 @@ class DoctorController extends AdminController {
         $input['img_url'] = $fileName;
         Doctor::create($input);
         $request->file('image')->move($destinationPath, $fileName);
+        Flash::success('Doctor baru telah dibuat');
         return redirect('admin/doctor');
     }
 
     public function getDelete($id)
     {
         Doctor::find($id)->delete();
+        Flash::success('Doctor telah dihapus');
         return redirect('/admin/doctor/list');
     }
 
@@ -66,6 +69,7 @@ class DoctorController extends AdminController {
         $doctor->publication = $request->input('publication');
         $doctor->title = $request->input('title');
         $doctor->save();
+        Flash::success('Doctor telah diperbaharui');
         return redirect('/admin/doctor/list');
     }
 

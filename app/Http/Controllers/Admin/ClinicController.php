@@ -2,6 +2,7 @@
 use App\Clinic;
 use App\Http\Requests\CreateClinicRequest;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class ClinicController extends AdminController {
 
@@ -40,6 +41,7 @@ class ClinicController extends AdminController {
             'description' => $request->input('description')
         ]);
         \Cache::forever('clinics',Clinic::all());
+        Flash::success('Clinic baru telah dibuat');
         return redirect('admin/clinic');
     }
 
@@ -47,7 +49,8 @@ class ClinicController extends AdminController {
     {
         Clinic::find($id)->delete();
         \Cache::forever('clinics',Clinic::all());
-        return $this->getList();
+        Flash::success('Clinic telah dihapus');
+        return redirect('admin/clinic');
     }
 
     public function postEdit(Request $request)
@@ -61,8 +64,10 @@ class ClinicController extends AdminController {
         }
         $clinic->name = $request->input('name');
         $clinic->description = $request->input('description');
+        $clinic->slug = str_slug($request->input('name'));
         $clinic->save();
         \Cache::forever('clinics',Clinic::all());
+        Flash::success('Clinic telah diperbaharui');
         return redirect('admin/clinic');
     }
 

@@ -18,6 +18,7 @@ class CreateCategory extends Migration {
             $table->integer('clinic_id')->unsigned();
             $table->foreign('clinic_id')->references('id')->on('clinic')->onDelete('cascade');
             $table->string('name');
+            $table->string('slug');
             $table->timestamps();
         });
 	}

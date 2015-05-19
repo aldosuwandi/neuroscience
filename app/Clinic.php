@@ -24,4 +24,10 @@ class Clinic extends Model
             ->where('published','=',false)->count();
     }
 
+    public static function create(array $attributes)
+    {
+        $attributes['slug'] = str_slug($attributes['name']);
+        parent::create($attributes);
+    }
+
 }

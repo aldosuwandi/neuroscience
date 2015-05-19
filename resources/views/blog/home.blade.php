@@ -10,7 +10,7 @@
         @else
             @foreach($posts as $post)
                 <div class="article" style="text-align:justify">
-                    <h3> <a href="/post/view/{{$post->id}}">{{$post->title}}</a></h3>
+                    <h3> <a href="/post/view/{{$post->id}}/{{$post->slug}}">{{$post->title}}</a></h3>
                     @if ($post->creator != 'Unspecified')
                     <p class="lead" style="font-size: 17px;margin-bottom:5px">oleh {{$post->creator}} </p>
                     @endif
@@ -23,14 +23,14 @@
                             </div>
                             <div class="col-sm-9">
                                 <p><?php echo strip_tags(substr($post->text,0,1000)).'....'; ?></p>
-                                <a class="btn btn-primary" href="/post/view/{{$post->id}}">Lihat
+                                <a class="btn btn-primary" href="/post/view/{{$post->id}}/{{$post->slug}}">Lihat
                                     <span class="glyphicon glyphicon-chevron-right"></span>
                                 </a>
                             </div>
                         </div>
                     @else
                         <p><?php echo strip_tags(substr($post->text,0,1000)).'....'; ?></p>
-                        <a class="btn btn-primary" href="/post/view/{{$post->id}}">Lihat
+                        <a class="btn btn-primary" href="/post/view/{{$post->id}}/{{$post->slug}}">Lihat
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
                     @endif

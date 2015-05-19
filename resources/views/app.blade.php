@@ -6,6 +6,7 @@
 <body style="background: #FFFAE7;">
     @include('partials.nav')
     <div class="container">
+        @include('flash::message')
         @yield('content')
         @include('partials.footer')
     </div>

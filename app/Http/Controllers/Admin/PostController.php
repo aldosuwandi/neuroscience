@@ -5,6 +5,7 @@ use App\Http\Requests;
 use App\Post;
 use Illuminate\Http\Request;
 use App\Clinic;
+use Laracasts\Flash\Flash;
 
 
 class PostController extends AdminController
@@ -78,12 +79,14 @@ class PostController extends AdminController
             'text' => $request->input('text'),
             'img_url' => $fileName
         ]);
+        Flash::success('Post baru telah dibuat');
         return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 
     public function getDelete($id)
     {
         Post::find($id)->delete();
+        Flash::success('Post telah dihapus');
         return redirect('admin/post/list/1/1');
     }
 
@@ -101,7 +104,9 @@ class PostController extends AdminController
         $post->creator = $request->input('creator');
         $post->title = $request->input('title');
         $post->text = $request->input('text');
+        $post->slug = str_slug($request->input('title'));
         $post->save();
+        Flash::success('Post telah diperbaharui');
         return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 

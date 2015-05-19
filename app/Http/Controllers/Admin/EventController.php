@@ -4,6 +4,8 @@ use App\Event;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateEventRequest;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
+
 
 class EventController extends AdminController {
 
@@ -39,6 +41,7 @@ class EventController extends AdminController {
             'active' => false
         ]);
         $request->file('image')->move($destinationPath, $fileName);
+        Flash::success('Event baru telah dibuat');
         return redirect('/admin/event');
     }
     
@@ -54,20 +57,34 @@ class EventController extends AdminController {
         $event->name = $request->input('name');
         $event->text = $request->input('text');
         $event->save();
+        Flash::success('Event telah diperbaharui');
         return redirect('/admin/event/list');
     }
 
     public function getDelete($id)
     {
         Event::find($id)->delete();
-        return $this->getList();
+        Flash::success('Event telah dihapus');
+        return redirect('/admin/event/list');
     }
 
     public function getActivate($id)
     {
-        $event = Event::find($id);
-        $event->active = true;
-        $event->save();
+        $events = Event::all();
+        $count = 0;
+        foreach($events as $event) {
+            if ($event->active) {
+                $count++;
+            }
+        }
+        if ($count == 1) {
+            Flash::error('Hanya boleh 1 event yang aktif');
+        } else {
+            $event = Event::find($id);
+            $event->active = true;
+            $event->save();
+            Flash::success('Event telah diaktifkan');
+        }
         return redirect('/admin/event');
     }
 
@@ -76,6 +93,7 @@ class EventController extends AdminController {
         $event = Event::find($id);
         $event->active = false;
         $event->save();
+        Flash::success('Event telah dinonaktifkan');
         return redirect('/admin/event');
     }
 

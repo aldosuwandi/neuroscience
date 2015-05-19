@@ -12,7 +12,7 @@
                 <img class="img-circle img-responsive img-center" src="/uploads/{{$doctor->img_url}}" alt=""
                      style="width: 200px;height:250px">
                 <h3>
-                    <a href="/doctors/view/{{$doctor->id}}">
+                    <a href="/doctors/view/{{$doctor->id}}/{!! str_slug($doctor->name) !!}">
                         {{$doctor->name}}
                     </a>
                 </h3>

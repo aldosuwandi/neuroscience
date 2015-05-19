@@ -8,9 +8,14 @@ use App\Post;
 
 class ClinicController extends Controller {
 
-    public function getHome($id,$categoryId = null)
+    public function getHome($id,$clinicSlug = null,$categorySlug = null)
     {
         $clinic = Clinic::find($id);
+        if (is_null($clinicSlug) || $clinic->slug != $clinicSlug) {
+            return redirect('clinic/home/'.$id.'/'.$clinic->slug);
+        }
+
+        $categoryId = null;
         if ($clinic->name == 'Other Services') {
             $serviceCategories = $clinic->categories;
             foreach($serviceCategories as $category) {
@@ -19,11 +24,14 @@ class ClinicController extends Controller {
                 }
             }
         }
+
         $categories = \Cache::rememberForever('categories_'.$id, function() use ($id)
         {
            return Clinic::find($id)->categories()->getResults();
         });
-        if (!is_null($categoryId)) {
+
+        if (!is_null($categorySlug)) {
+            $categoryId = Category::where('clinic_id','=',$id)->where('slug','=',$categorySlug)->first()->id;
             $posts = Post::where('category_id','=',$categoryId)->paginate(5);
         } else {
             $posts = null;

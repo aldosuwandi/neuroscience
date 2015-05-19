@@ -18,12 +18,13 @@
         <div class="row">
             <ul id="category_tree">
                 @foreach($categories as $category)
-                    <li value="{{$category->id}}"><a href="/clinic/home/{{$clinic->id}}/{{$category->id}}">{{$category->name}}</a>
+                    <li value="{{$category->id}}">
+                        <a href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}/{{$category->slug}}">{{$category->name}}</a>
                         <span class="badge pull-right">{!! count($category->posts()->getResults()); !!}</span>
                     <ul>
                         @foreach($category->posts()->getResults() as $post)
                             <li>
-                                <a href="/post/view/{{$post->id}}">{{$post->title}}</a>
+                                <a href="/post/view/{{$post->id}}/{{$post->slug}}">{{$post->title}}</a>
                             </li>
                         @endforeach
                     </ul>
@@ -31,7 +32,7 @@
                 @endforeach
                 <li>
                     <i class="indicator glyphicon glyphicon-question-sign"></i>
-                    <a href="/question/list/{{$clinic->id}}">Tanya Jawab</a>
+                    <a href="/question/list/{{$clinic->id}}/{{$clinic->slug}}">Tanya Jawab</a>
                 </li>
             </ul>
         </div>

@@ -6,16 +6,21 @@ use App\Post;
 
 class PostController extends Controller {
 
-    public function getView($id)
+    public function getView($id,$slug = null)
     {
         $post = Post::find($id);
-        $clinic = $post->category()->getResults()->clinic()->getResults();
-        $categories = $clinic->categories()->getResults();
-        return view('blog.post')
-            ->with('post',$post)
-            ->with('clinic',$clinic)
-            ->with('categoryId',$post->category->id)
-            ->with('categories',$categories);
+        if (is_null($slug) || $post->slug != $slug) {
+            return redirect('/post/view/'.$id.'/'.$post->slug);
+        } else {
+            $clinic = $post->category()->getResults()->clinic()->getResults();
+            $categories = $clinic->categories()->getResults();
+            return view('blog.post')
+                ->with('post',$post)
+                ->with('clinic',$clinic)
+                ->with('categoryId',$post->category->id)
+                ->with('categories',$categories);
+        }
+
     }
 
 }

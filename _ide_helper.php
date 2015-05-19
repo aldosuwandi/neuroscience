@@ -1,7 +1,7 @@
 <?php
 /**
  * An helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.0.28 on 2015-05-05.
+ * Generated for Laravel 5.0.31 on 2015-05-19.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -2174,23 +2174,25 @@ namespace {
          *
          * @param string $key
          * @param mixed $value
-         * @return int 
+         * @return void 
+         * @throws \LogicException
          * @static 
          */
         public static function increment($key, $value = 1){
-            return \Illuminate\Cache\FileStore::increment($key, $value);
+            \Illuminate\Cache\DatabaseStore::increment($key, $value);
         }
         
         /**
-         * Decrement the value of an item in the cache.
+         * Increment the value of an item in the cache.
          *
          * @param string $key
          * @param mixed $value
-         * @return int 
+         * @return void 
+         * @throws \LogicException
          * @static 
          */
         public static function decrement($key, $value = 1){
-            return \Illuminate\Cache\FileStore::decrement($key, $value);
+            \Illuminate\Cache\DatabaseStore::decrement($key, $value);
         }
         
         /**
@@ -2200,27 +2202,27 @@ namespace {
          * @static 
          */
         public static function flush(){
-            \Illuminate\Cache\FileStore::flush();
+            \Illuminate\Cache\DatabaseStore::flush();
         }
         
         /**
-         * Get the Filesystem instance.
+         * Get the underlying database connection.
          *
-         * @return \Illuminate\Filesystem\Filesystem 
+         * @return \Illuminate\Database\MySqlConnection 
          * @static 
          */
-        public static function getFilesystem(){
-            return \Illuminate\Cache\FileStore::getFilesystem();
+        public static function getConnection(){
+            return \Illuminate\Cache\DatabaseStore::getConnection();
         }
         
         /**
-         * Get the working directory of the cache.
+         * Get the encrypter instance.
          *
-         * @return string 
+         * @return \Illuminate\Contracts\Encryption\Encrypter 
          * @static 
          */
-        public static function getDirectory(){
-            return \Illuminate\Cache\FileStore::getDirectory();
+        public static function getEncrypter(){
+            return \Illuminate\Cache\DatabaseStore::getEncrypter();
         }
         
         /**
@@ -2230,7 +2232,7 @@ namespace {
          * @static 
          */
         public static function getPrefix(){
-            return \Illuminate\Cache\FileStore::getPrefix();
+            return \Illuminate\Cache\DatabaseStore::getPrefix();
         }
         
     }
@@ -4339,11 +4341,12 @@ namespace {
         /**
          * Get the count of the total records for the paginator.
          *
+         * @param array $columns
          * @return int 
          * @static 
          */
-        public static function getCountForPagination(){
-            return \Illuminate\Database\Query\Builder::getCountForPagination();
+        public static function getCountForPagination($columns = array()){
+            return \Illuminate\Database\Query\Builder::getCountForPagination($columns);
         }
         
         /**
@@ -4622,7 +4625,7 @@ namespace {
         /**
          * Register an event subscriber with the dispatcher.
          *
-         * @param string $subscriber
+         * @param object|string $subscriber
          * @return void 
          * @static 
          */
@@ -5376,7 +5379,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -5399,7 +5402,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -5434,7 +5437,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -5446,7 +5449,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -7993,7 +7996,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function query($key = null, $default = null){
@@ -8016,7 +8019,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function cookie($key = null, $default = null){
@@ -8051,7 +8054,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function header($key = null, $default = null){
@@ -8063,7 +8066,7 @@ namespace {
          *
          * @param string $key
          * @param mixed $default
-         * @return string 
+         * @return string|array 
          * @static 
          */
         public static function server($key = null, $default = null){
@@ -12301,6 +12304,88 @@ namespace {
          */
         public static function hasMacro($name){
             return \Illuminate\Html\HtmlBuilder::hasMacro($name);
+        }
+        
+    }
+
+
+    class Flash extends \Laracasts\Flash\Flash{
+        
+        /**
+         * Flash an information message.
+         *
+         * @param string $message
+         * @static 
+         */
+        public static function info($message){
+            return \Laracasts\Flash\FlashNotifier::info($message);
+        }
+        
+        /**
+         * Flash a success message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function success($message){
+            return \Laracasts\Flash\FlashNotifier::success($message);
+        }
+        
+        /**
+         * Flash an error message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function error($message){
+            return \Laracasts\Flash\FlashNotifier::error($message);
+        }
+        
+        /**
+         * Flash a warning message.
+         *
+         * @param string $message
+         * @return $this 
+         * @static 
+         */
+        public static function warning($message){
+            return \Laracasts\Flash\FlashNotifier::warning($message);
+        }
+        
+        /**
+         * Flash an overlay modal.
+         *
+         * @param string $message
+         * @param string $title
+         * @return $this 
+         * @static 
+         */
+        public static function overlay($message, $title = 'Notice'){
+            return \Laracasts\Flash\FlashNotifier::overlay($message, $title);
+        }
+        
+        /**
+         * Flash a general message.
+         *
+         * @param string $message
+         * @param string $level
+         * @return $this 
+         * @static 
+         */
+        public static function message($message, $level = 'info'){
+            return \Laracasts\Flash\FlashNotifier::message($message, $level);
+        }
+        
+        /**
+         * Add an "important" flash to the session.
+         *
+         * @return $this 
+         * @static 
+         */
+        public static function important(){
+            return \Laracasts\Flash\FlashNotifier::important();
         }
         
     }

@@ -38,5 +38,7 @@ Route::controllers([
     'question' => 'Blog\QuestionController',
     'schedule' => 'Blog\ScheduleController',
     'doctors' => 'Blog\DoctorController',
-    'events'=> 'Blog\EventController'
+    'events'=> 'Blog\EventController',
+    'sitemap' => 'SitemapController'
 ]);
+

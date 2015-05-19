@@ -74,14 +74,14 @@
                 <div class="col-md-4">
                     <div class='wrapper' style="margin-bottom: 25px;">
                         <!-- image -->
-                        <a  href="/clinic/home/{{$clinic->id}}">
+                        <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">
                             <img src="/uploads/{{$clinic->img_url}}" style="width: 360px;height: 230px">
                         </a>
                         <!-- description div -->
                         <div class='description'>
                             <!-- description content -->
                             <p class='description_content'>
-                                <a  href="/clinic/home/{{$clinic->id}}" style="color:#ffffff;">{{$clinic->name}}</a>
+                                <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}" style="color:#ffffff;">{{$clinic->name}}</a>
                             </p>
                             <!-- end description content -->
                         </div>

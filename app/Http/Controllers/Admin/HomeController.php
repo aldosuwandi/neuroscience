@@ -3,6 +3,7 @@
 use App\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateHomeRequest;
+use Laracasts\Flash\Flash;
 
 class HomeController extends AdminController {
 
@@ -32,6 +33,7 @@ class HomeController extends AdminController {
         ]);
         $request->file('image')->move($destinationPath, $fileName);
         \Cache::forever('homes',Home::all());
+        Flash::success('Home banner baru telah dibuat');
         return redirect('admin/home');
     }
 
@@ -39,7 +41,8 @@ class HomeController extends AdminController {
     {
         Home::find($id)->delete();
         \Cache::forever('homes',Home::all());
-        return $this->getList();
+        Flash::success('Home banner telah dihapus');
+        return redirect('admin/home');
     }
 
 }

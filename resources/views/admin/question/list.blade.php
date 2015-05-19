@@ -47,7 +47,7 @@
                             @else
                                 <a class="btn btn-sm btn-info" href="/admin/question/edit/{{$question->id}}">Edit Answer</a>
                             @endif
-                            <a class="btn btn-sm btn-success">Delete</a>
+                            <a class="btn btn-sm btn-success" href="/admin/question/delete/{{$question->id}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach
