@@ -22,10 +22,11 @@ class CreateQuestionRequest extends Request {
     public function rules()
     {
         return [
-            'questioner' => 'required',
-            'question_title' => 'required',
-            'question_text' => 'required',
-            'captcha' => 'required|captcha',
+            'questioner' => 'required|min:3|max:100',
+            'email' => 'required|email',
+            'question_title' => 'required|min:5|max:100',
+            'question_text' => 'required|min:5|max:2048',
+            'g-recaptcha-response' => 'required|captcha',
         ];
     }
 

@@ -65,11 +65,12 @@
         </div>
 
         <div class="control-group form-group">
-            <img src="{{captcha_src()}}" alt="captcha"/>
-            <br/><br/>
-            <label>Please enter image above : </label>
-            <input type="text"  size="5" class="input-sm" id="captcha" name="captcha">
-            {!!$errors->first('captcha', '<p class="help-block">:message</p>')!!}
+            {!! app('captcha')->display(); !!}
+            {{--<img src="{{captcha_src()}}" alt="captcha"/>--}}
+            {{--<br/><br/>--}}
+            {{--<label>Please enter image above : </label>--}}
+            {{--<input type="text"  size="5" class="input-sm" id="captcha" name="captcha">--}}
+            {!!$errors->first('g-recaptcha-response', '<p class="help-block">:message</p>')!!}
         </div>
         <button type="submit" class="btn btn-success">Submit</button>
         {!!Form::close()!!}

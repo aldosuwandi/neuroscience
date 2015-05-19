@@ -12,6 +12,7 @@
 @endsection
 
 @section('script')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $.fn.extend({
             treed: function (o) {

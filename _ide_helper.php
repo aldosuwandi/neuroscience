@@ -11606,55 +11606,6 @@ namespace {
     }
 
 
-    class Captcha extends \Mews\Captcha\Facades\Captcha{
-        
-        /**
-         * 
-         *
-         * @param string $config
-         * @return \Mews\Captcha\ImageManager->response 
-         * @static 
-         */
-        public static function create($config = 'default'){
-            return \Mews\Captcha\Captcha::create($config);
-        }
-        
-        /**
-         * 
-         *
-         * @param $value
-         * @return bool 
-         * @static 
-         */
-        public static function check($value){
-            return \Mews\Captcha\Captcha::check($value);
-        }
-        
-        /**
-         * 
-         *
-         * @param null $config
-         * @return string 
-         * @static 
-         */
-        public static function src($config = null){
-            return \Mews\Captcha\Captcha::src($config);
-        }
-        
-        /**
-         * 
-         *
-         * @param null $config
-         * @return string 
-         * @static 
-         */
-        public static function img($config = null){
-            return \Mews\Captcha\Captcha::img($config);
-        }
-        
-    }
-
-
     class Form extends \Illuminate\Html\FormFacade{
         
         /**

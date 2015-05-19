@@ -32,12 +32,12 @@
                 <div class="controls">
                     {!!Form::label('name')!!}
                     {!!Form::text('name',$category->name,[
-                    'class' => 'form-control',
-                    'id'=>'name',
-                    'required data-validation-required-message'=>'Please enter category name.'
+                        'class' => 'form-control',
+                        'id'=>'name',
+                        'required data-validation-required-message'=>'Please enter category name.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('name', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div id="success"></div>

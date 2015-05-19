@@ -26,7 +26,7 @@
                     'required data-validation-required-message'=>'Please enter doctor name.'
                     ])
                 !!}
-                <p class="help-block"></p>
+                {!!$errors->first('name', '<p class="help-block">:message</p>')!!}
             </div>
         </div>
         <div class="control-group form-group">
@@ -38,7 +38,7 @@
                     'required data-validation-required-message'=>'Please enter clinic.'
                     ])
                 !!}
-                <p class="help-block"></p>
+                {!!$errors->first('clinic', '<p class="help-block">:message</p>')!!}
             </div>
         </div>
         <div class="control-group form-group">
@@ -50,7 +50,7 @@
                     'required data-validation-required-message'=>'Please enter clinic.'
                 ])
                 !!}
-                <p class="help-block"></p>
+                {!!$errors->first('day', '<p class="help-block">:message</p>')!!}
             </div>
         </div>
         <div class="control-group form-group">
@@ -62,7 +62,7 @@
                     'required data-validation-required-message'=>'Please enter time.'
                 ])
                 !!}
-                <p class="help-block"></p>
+                {!!$errors->first('time', '<p class="help-block">:message</p>')!!}
             </div>
         </div>
         <div id="success"></div>

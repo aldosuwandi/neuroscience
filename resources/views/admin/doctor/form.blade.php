@@ -34,7 +34,7 @@
                         'required data-validation-required-message'=>'Please enter doctor name.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('name', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div class="control-group form-group">
@@ -46,7 +46,7 @@
                         'required data-validation-required-message'=>'Please enter doctor title.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('title', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div class="control-group form-group">
@@ -54,11 +54,11 @@
                     {!!Form::label('birthday')!!}
                     {!!Form::text('birthday',$doctor->birthday,[
                         'class' => 'form-control',
-                        'id'=>'title',
+                        'id'=>'birthday',
                         'required data-validation-required-message'=>'Please enter doctor birthday.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('birthday', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
         </div>
@@ -72,7 +72,7 @@
                         'required data-validation-required-message'=>'Please enter doctor institution.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('institution', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div class="control-group form-group">
@@ -84,7 +84,7 @@
                         'required data-validation-required-message'=>'Please enter doctor address.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('address', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div class="control-group form-group">
@@ -96,7 +96,7 @@
                         'required data-validation-required-message'=>'Please enter doctor phone.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('phone', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
             <div class="control-group form-group">
@@ -105,10 +105,10 @@
                     {!!Form::email('email',$doctor->email,[
                         'class' => 'form-control',
                         'id'=>'email',
-                        'required data-validation-required-message'=>'Please enter doctor birthday.'
+                        'required data-validation-required-message'=>'Please enter doctor email.'
                     ])
                     !!}
-                    <p class="help-block"></p>
+                    {!!$errors->first('email', '<p class="help-block">:message</p>')!!}
                 </div>
             </div>
         </div>
