@@ -26,6 +26,10 @@ class PostController extends AdminController
         $category = null;
         if (!is_null($clinicId)) {
             $categories = Clinic::find($clinicId)->categories()->getResults();
+            if (count($categories) == 0) {
+                Flash::error('Harap buat category terlebih dahulu di clinic ini');
+                return redirect('/admin/category/list/'.$clinicId);
+            }
             $clinic = Clinic::find($clinicId);
         }
         if (!is_null($categoryId)) {
@@ -53,7 +57,10 @@ class PostController extends AdminController
             $post = new Post();
         }
         if (\Request::has('clinic')) {
-            $categories = Clinic::find(\Request::input('clinic'))->categories()->getResults();
+            $categories = Clinic::find(\Request::input('clinic'))->categories;
+            if (count($categories) == 0) {
+                Flash::error('Harap buat category terlebih dahulu di clinic tersebut');
+            }
             $clinicId = \Request::input('clinic');
         }
         return view('admin.post.form')

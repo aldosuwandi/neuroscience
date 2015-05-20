@@ -15,17 +15,22 @@ class CategoryController extends AdminController {
     public function getList($clinicId = null)
     {
         $clinics = Clinic::all();
-        $categories = array();
-        $clinic = null;
-        if (!is_null($clinicId)) {
-            $categories = Clinic::find($clinicId)->categories()->getResults();
-            $clinic = Clinic::find($clinicId);
+        if (count($clinics) == 0) {
+            Flash::error('Harap buat clinic terlebih dahulu');
+            return redirect('/admin/clinic');
+        } else {
+            $categories = array();
+            $clinic = null;
+            if (!is_null($clinicId)) {
+                $categories = Clinic::find($clinicId)->categories()->getResults();
+                $clinic = Clinic::find($clinicId);
+            }
+            return view('admin.category.list')
+                ->with('clinic',$clinic)
+                ->with('clinics',$clinics)
+                ->with('clinicId',$clinicId)
+                ->with('categories',$categories);
         }
-        return view('admin.category.list')
-            ->with('clinic',$clinic)
-            ->with('clinics',$clinics)
-            ->with('clinicId',$clinicId)
-            ->with('categories',$categories);
     }
 
     public function getCreate($id = null)

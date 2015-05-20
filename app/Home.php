@@ -6,6 +6,6 @@ class Home extends Model {
 
     protected $table = 'home';
 
-    protected $fillable = ['img_url'];
+    protected $fillable = ['title','link','caption','img_url'];
 
 }

@@ -15,9 +15,9 @@ class DatabaseSeeder extends Seeder {
         Model::unguard();
         $this->call('ClinicTableSeeder');
         $this->call('CategoryTableSeeder');
-        $this->call('PostTableSeeder');
+//        $this->call('PostTableSeeder');
         $this->call('HomeTableSeeder');
-        $this->call('EventTableSeeder');
+//        $this->call('EventTableSeeder');
         $this->call('QuestionTableSeeder');
         $this->call('ScheduleTableSeeder');
         $this->call('DoctorTableSeeder');

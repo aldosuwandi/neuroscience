@@ -28,7 +28,7 @@
             'required data-validation-required-message'=>'Please enter clinic name.'
             ])
         !!}
-        <p class="help-block"></p>
+        {!!$errors->first('name', '<p class="help-block">:message</p>')!!}
         </div>
     </div>
     <div class="control-group form-group">
@@ -40,12 +40,13 @@
                 'required data-validation-required-message'=>'Please enter clinic name.',
                 ])
             !!}
-            <p class="help-block"></p>
+            {!!$errors->first('description', '<p class="help-block">:message</p>')!!}
         </div>
     </div><div class="control-group form-group">
         <div class="controls">
             {!!Form::label('clinic background')!!}
             {!!Form::file('image') !!}
+            {!!$errors->first('image', '<p class="help-block">:message</p>')!!}
         </div>
     </div>
     <div id="success"></div>

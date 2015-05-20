@@ -27,31 +27,35 @@
     <a class="btn btn-primary" href="/admin/category/create">Create</a>
     <hr/>
     <div class="row">
-        <div class="col-md-5">
-            <div class="table-responsive">
-            @if (!empty($categories))
-                <table class="table table-striped table-hover table-condensed table-bordered"
-                       style="font-size:14px" width="50%">
-                    <thead>
+        <div class="table-responsive">
+        @if (!empty($categories))
+            <table class="table table-striped table-hover table-condensed table-bordered"
+                   style="font-size:14px" width="50%">
+                <thead>
+                <tr>
+                    <th class="col-sm-3">Name</th>
+                    <th class="col-sm-2">Total Posts</th>
+                    <th>Date Created</th>
+                    <th class="col-sm-2">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                @foreach($categories as $category)
                     <tr>
-                        <th class="col-sm-3">Name</th>
-                        <th class="col-sm-2">Action</th>
+                        <td>
+                            <a href="/admin/category/create/{{$category->id}}">{{$category->name}}</a>
+                        </td>
+                        <td>{!!count($category->posts)!!}</td>
+                        <td>{{$category->created_at}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" href="/admin/category/create/{{$category->id}}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="/admin/category/delete/{{$category->id}}">Delete</a>
+                        </td>
                     </tr>
-                    </thead>
-                    <tbody>
-                    @foreach($categories as $category)
-                        <tr>
-                            <td>{{$category->name}}</td>
-                            <td>
-                                <a class="btn btn-sm btn-danger" href="/admin/category/create/{{$category->id}}">Edit</a>
-                                <a class="btn btn-sm btn-success" href="/admin/category/delete/{{$category->id}}">Delete</a>
-                            </td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-            @endif
-            </div>
+                @endforeach
+                </tbody>
+            </table>
+        @endif
         </div>
     </div>
 @stop

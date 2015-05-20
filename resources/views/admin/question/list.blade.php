@@ -31,7 +31,9 @@
                    style="font-size:14px" width="50%">
                 <thead>
                 <tr>
-                    <th class="col-sm-3">Title</th>
+                    <th>Title</th>
+                    <th>Penanya</th>
+                    <th>Penjawab</th>
                     <th class="col-sm-2">Date</th>
                     <th class="col-sm-2">Action</th>
                 </tr>
@@ -39,14 +41,22 @@
                 <tbody>
                 @foreach($questions as $question)
                     <tr>
-                        <td>{{$question->question_title}}</td>
+                        <td>
+                            <a href="/admin/question/edit/{{$question->id}}">
+                                {{$question->question_title}}
+                            </a>
+                        </td>
+                        <td>{{$question->questioner}}</td>
+                        <td>{{$question->answering}}</td>
                         <td>{{$question->created_at}}</td>
                         <td>
-                            @if (!$question->published)
-                                <a class="btn btn-sm btn-danger" href="/admin/question/edit/{{$question->id}}">Answer</a>
-                            @else
-                                <a class="btn btn-sm btn-info" href="/admin/question/edit/{{$question->id}}">Edit Answer</a>
-                            @endif
+                            <a class="btn btn-sm btn-info" href="/admin/question/edit/{{$question->id}}">
+                                @if (!$question->published)
+                                    Answer
+                                @else
+                                    Edit Answer
+                                @endif
+                            </a>
                             <a class="btn btn-sm btn-success" href="/admin/question/delete/{{$question->id}}">Delete</a>
                         </td>
                     </tr>

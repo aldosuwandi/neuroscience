@@ -9,8 +9,8 @@ class QuestionTableSeeder extends Seeder {
     {
         $faker = Faker\Factory::create();
         DB::table('question')->delete();
-        for($i = 1; $i <= 5 ; $i++) {
-            for($j = 1; $j <= 5 ; $j++) {
+        for($i = 1; $i <= 4 ; $i++) {
+            for($j = 1; $j <= 4 ; $j++) {
                 Question::create([
                     'clinic_id' => $i,
                     'questioner' => $faker->firstName.' '.$faker->lastName,

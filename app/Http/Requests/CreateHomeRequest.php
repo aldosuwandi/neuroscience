@@ -22,6 +22,8 @@ class CreateHomeRequest extends Request {
 	public function rules()
 	{
 		return [
+            'title' => 'required',
+            'caption' => 'required',
 			'image' => 'required'
 		];
 	}

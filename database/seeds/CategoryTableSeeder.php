@@ -10,7 +10,7 @@ class CategoryTableSeeder extends Seeder {
         DB::table('category')->delete();
         $statement = "ALTER TABLE category AUTO_INCREMENT = 1;";
         \DB::unprepared($statement);
-        for($i = 1; $i <= 5 ; $i++) {
+        for($i = 1; $i <= 4 ; $i++) {
             Category::create([
                 'clinic_id' => $i,
                 'name' => 'Knowledge'

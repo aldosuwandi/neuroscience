@@ -36,13 +36,13 @@ class SitemapController extends Controller
                 return Clinic::all();
             });
             foreach ($clinics as $clinic) {
-                $sitemap->add(url('clinic/' . $clinic->id . '/' . $clinic->slug),
+                $sitemap->add(url('clinic/home/' . $clinic->id . '/' . $clinic->slug),
                     $clinic->created_at, '1.0', 'monthly');
                 foreach ($clinic->categories as $category) {
-                    $sitemap->add(url('clinic/' . $clinic->id . '/' . $clinic->slug . '/' . $category->slug),
+                    $sitemap->add(url('clinic/home/' . $clinic->id . '/' . $clinic->slug . '/' . $category->slug),
                         $category->created_at, '1.0', 'monthly');
                     foreach ($category->posts as $post) {
-                        $sitemap->add(url('post/' . $post->id . '/' . $post->slug),
+                        $sitemap->add(url('post/view/' . $post->id . '/' . $post->slug),
                             $post->created_at, '1.0', 'monthly');
                     }
                 }
@@ -64,7 +64,7 @@ class SitemapController extends Controller
                     'title' => $event->name,
                     'caption' => $event->caption
                 );
-                $sitemap->add(url('event/' . $event->id . '/' . str_slug($event->name)),
+                $sitemap->add(url('event/view/' . $event->id . '/' . str_slug($event->name)),
                     $event->created_at, '1.0', 'daily', $images);
             }
 

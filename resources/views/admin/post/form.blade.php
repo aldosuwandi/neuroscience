@@ -32,7 +32,11 @@
         <label for="clinic">Select Category:</label>
         <select class="form-control" id="category_id" name="category_id">
             @foreach($categories as $category)
-                <option value="{{$category->id}}"  @if($post->category->id == $category->id) selected @endif>{{$category->name}}</option>
+                @if($post->id == null)
+                    <option value="{{$category->id}}">{{$category->name}}</option>
+                @else
+                    <option value="{{$category->id}}"  @if($post->category->id == $category->id) selected @endif>{{$category->name}}</option>
+                @endif
             @endforeach
         </select>
         {!!$errors->first('category_id', '<p class="help-block">:message</p>')!!}

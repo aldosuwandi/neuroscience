@@ -60,7 +60,10 @@
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <td>{{$post->title}}</td>
+                    <td>
+                        <a href="/admin/post/create/{{$post->id}}?clinic={{$post->category->clinic->id}}">{{$post->title}}
+                        </a>
+                    </td>
                     <td>{{$post->creator}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>

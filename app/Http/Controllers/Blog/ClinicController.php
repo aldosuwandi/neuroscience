@@ -16,13 +16,18 @@ class ClinicController extends Controller {
         }
 
         $categoryId = null;
-        if ($clinic->name == 'Other Services') {
+
+        /*
+         *
+         */
+        if ($clinic->name == 'Other Services' && $categorySlug == null) {
             $serviceCategories = $clinic->categories;
             foreach($serviceCategories as $category) {
                 if ($category->name == 'Service') {
                     $categoryId = $category->id;
                 }
             }
+            return redirect('clinic/home/'.$id.'/'.$clinic->slug.'/service');
         }
 
         $categories = \Cache::rememberForever('categories_'.$id, function() use ($id)

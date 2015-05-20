@@ -15,7 +15,7 @@
                     <h4 class="modal-title">{{$event->name}}</h4>
                 </div>
                 <a href="/events/view/{{$event->id}}">
-                    <img  src="/uploads/{{$event->img_url}}" style="max-height: 100%;max-width: 100%">
+                    <img  src="/uploads/{{$event->img_url}}"  style="max-height: 100%;max-width: 100%">
                 </a>
             </div>
         </div>
@@ -28,7 +28,10 @@
             @for($i = 0; $i < count($homes); $i++)
             <div class="item @if($i == 0) active @endif">
                 <div class="fill">
-                <img src="/uploads/{{$homes[$i]->img_url}}" style="width:100%;height: 100%">
+                    <a href="{{$homes[$i]->link}}">
+                        <img src="/uploads/{{$homes[$i]->img_url}}" title="{{$homes[$i]->title}}" alt="{{$homes[$i]->caption}}"
+                             style="width:100%;height: 100%">
+                    </a>
                 </div>
             </div>
             @endfor

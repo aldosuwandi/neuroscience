@@ -19,7 +19,11 @@
                 <tbody>
                 @foreach($schedules as $schedule)
                     <tr>
-                        <td>{{$schedule->name}}</td>
+                        <td>
+                            <a href="/admin/schedule/create/{{$schedule->id}}">
+                                {{$schedule->name}}
+                            </a>
+                        </td>
                         <td>{{$schedule->clinic}}</td>
                         <td>{{$schedule->day}}</td>
                         <td>{{$schedule->time}}</td>

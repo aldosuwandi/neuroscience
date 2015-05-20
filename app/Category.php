@@ -6,7 +6,7 @@ class Category extends Model
 {
     protected $table = 'category';
 
-    protected $fillable = ['clinic_id','name'];
+    protected $fillable = ['clinic_id','name','slug'];
 
     public function posts()
     {

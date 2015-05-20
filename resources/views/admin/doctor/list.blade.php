@@ -11,16 +11,20 @@
             <tr>
                 <th class="col-sm-3">Name</th>
                 <th class="col-sm-3">Title</th>
-                <th class="col-sm-1">Image URL</th>
+                <th class="col-sm-3">Email</th>
                 <th class="col-sm-2">Action</th>
             </tr>
             </thead>
             <tbody>
             @foreach($doctors as $doctor)
                 <tr>
-                    <td>{{$doctor->name}}</td>
+                    <td>
+                        <a href="/admin/doctor/create/{{$doctor->id}}">
+                            {{$doctor->name}}
+                        </a>
+                    </td>
                     <td>{{$doctor->title}}</td>
-                    <td>{{$doctor->img_url}}</td>
+                    <td>{{$doctor->email}}</td>
                     <td>
                         <a class="btn btn-sm btn-danger" href="/admin/doctor/create/{{$doctor->id}}">Edit</a>
                         <a class="btn btn-sm btn-success" href="/admin/doctor/delete/{{$doctor->id}}">Delete</a>

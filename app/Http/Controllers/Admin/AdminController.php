@@ -12,4 +12,12 @@ abstract class AdminController extends Controller {
         $this->middleware('auth');
     }
 
+    protected function uploads($request,$imageName,$dir = 'uploads')
+    {
+        $destinationPath = $dir;
+        $fileName = sha1(microtime()).".".$request->file($imageName)->getClientOriginalExtension();
+        $request->file($imageName)->move($destinationPath, $fileName);
+        return $fileName;
+    }
+
 }

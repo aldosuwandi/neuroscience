@@ -3,6 +3,7 @@
 use App\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateHomeRequest;
+use Illuminate\Http\Request;
 use Laracasts\Flash\Flash;
 
 class HomeController extends AdminController {
@@ -18,22 +19,39 @@ class HomeController extends AdminController {
         return view('admin.home.list')->with('homes',$homes);
     }
 
-    public function getCreate()
+    public function getCreate($id = null)
     {
-        $home = new Home();
+        if (!is_null($id)) {
+            $home = Home::find($id);
+        } else {
+            $home = new Home();
+        }
         return view('admin.home.form')->with('home',$home);
     }
 
     public function postCreate(CreateHomeRequest $request)
     {
-        $destinationPath = 'uploads';
-        $fileName = sha1(microtime()).".".$request->file('image')->getClientOriginalExtension();
-        Home::create([
-            'img_url' => $fileName
-        ]);
-        $request->file('image')->move($destinationPath, $fileName);
+        $fileName = $this->uploads($request,'image');
+        $input = $request->all();
+        $input['img_url'] = $fileName;
+        Home::create($input);
         \Cache::forever('homes',Home::all());
         Flash::success('Home banner baru telah dibuat');
+        return redirect('admin/home');
+    }
+
+    public function postEdit(Request $request)
+    {
+        $home = Home::find($request->input('id'));
+        if ($request->hasFile('image')) {
+            $fileName = $this->uploads($request,'image');
+            $home->img_url = $fileName;
+        }
+        $home->title = $request->input('title');
+        $home->caption = $request->input('caption');
+        $home->link = $request->input('link');
+        $home->save();
+        Flash::success('Home banner telah diperbaharui');
         return redirect('admin/home');
     }
 
