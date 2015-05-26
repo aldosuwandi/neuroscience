@@ -18,6 +18,11 @@ class Clinic extends Model
         return $this->hasMany('App\Question','clinic_id','id');
     }
 
+    public function ads()
+    {
+        return $this->hasMany('App\Ads','clinic_id','id');
+    }
+
     public function unAnswered()
     {
         return Question::where('clinic_id','=',$this->id)

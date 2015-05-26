@@ -42,7 +42,8 @@
             !!}
             {!!$errors->first('description', '<p class="help-block">:message</p>')!!}
         </div>
-    </div><div class="control-group form-group">
+    </div>
+    <div class="control-group form-group">
         <div class="controls">
             {!!Form::label('clinic background')!!}
             {!!Form::file('image') !!}

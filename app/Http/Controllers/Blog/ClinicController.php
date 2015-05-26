@@ -17,8 +17,8 @@ class ClinicController extends Controller {
 
         $categoryId = null;
 
-        /*
-         *
+        /**
+         * Other Services Treatment
          */
         if ($clinic->name == 'Other Services' && $categorySlug == null) {
             $serviceCategories = $clinic->categories;

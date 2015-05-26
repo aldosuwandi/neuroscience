@@ -1,10 +1,15 @@
 @extends('blog')
 
+@section('topSidebar')
+    <div class="well">
+        <h4>Discussion</h4>
+        <a class="btn btn-info" href="/question/create/{{$clinic->id}}">Tanya Dokter</a>
+    </div>
+@endsection
+
 @section('entries')
     <div class="col-md-8">
-        <h1 class="page-header">{{$clinic->name}}
-            <a class="btn btn-info" href="/question/create/{{$clinic->id}}" style="float:right">Tanya Dokter</a>
-        </h1>
+        <h2 class="page-header">Tanya Jawab {{$clinic->name}}</h2>
         @foreach($questions as $question)
             <div class="article" style="text-align:justify">
                 <h4>

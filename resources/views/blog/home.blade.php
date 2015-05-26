@@ -7,6 +7,7 @@
             <div class="article" style="text-align:justify">
                 <?php echo $clinic->description; ?>
             </div>
+            <hr>
         @else
             @foreach($posts as $post)
                 <div class="article" style="text-align:justify">
@@ -17,32 +18,19 @@
                     <p><span class="glyphicon glyphicon-time"></span> Dibuat  {{$post->created_at}}</p>
                     <hr>
                     @if (!is_null($post->img_url))
-                        <div class="row">
-                            <div class="col-sm-3">
-                                <img src="/uploads/{{$post->img_url}}" width="180" height="120">
-                            </div>
-                            <div class="col-sm-9">
-                                <p><?php echo strip_tags(substr($post->text,0,1000)).'....'; ?></p>
-                                <a class="btn btn-primary" href="/post/view/{{$post->id}}/{{$post->slug}}">Lihat
-                                    <span class="glyphicon glyphicon-chevron-right"></span>
-                                </a>
-                            </div>
-                        </div>
-                    @else
+                        <img src="/uploads/{{$post->img_url}}"  class="img-responsive">
+                        <hr>
+                    @endif
                         <p><?php echo strip_tags(substr($post->text,0,1000)).'....'; ?></p>
                         <a class="btn btn-primary" href="/post/view/{{$post->id}}/{{$post->slug}}">Lihat
                             <span class="glyphicon glyphicon-chevron-right"></span>
                         </a>
-                    @endif
-                    <hr>
                 </div>
+                <hr>
             @endforeach
             <div align="center">
                 <?php echo $posts->render();?>
             </div>
         @endif
-
-
-
     </div>
 @endsection

@@ -24,8 +24,7 @@
                     'class' => 'form-control',
                     'id'=>'name',
                     'required data-validation-required-message'=>'Please enter event name.'
-                ])
-                !!}
+                ])!!}
             </div>
             {!!$errors->first('name', '<p class="help-block">:message</p>')!!}
         </div>

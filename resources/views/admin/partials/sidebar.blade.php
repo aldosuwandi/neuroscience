@@ -1,4 +1,4 @@
-<div id="sidebar" class="col-sm-3 col-md-2 sidebar">
+<div id="sidebar" class="col-sm-3 col-md-2 sidebar collapse">
     <ul class="nav nav-sidebar">
         <li>
             <a href="/admin/clinic">Clinic</a>
@@ -24,5 +24,12 @@
         <li>
             <a href="/admin/event">Event</a>
         </li>
+        <li>
+            <a href="/admin/ads/list/1">Ads</a>
+        </li>
+        <li>
+            <a href="{{action('Auth\AuthController@getLogout')}}">Logout</a>
+        </li>
+
     </ul>
 </div>

@@ -1,8 +1,10 @@
 <?php namespace App\Http\Controllers\Blog;
 
+use App\Clinic;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use App\Post;
+use Illuminate\Http\Request;
 
 class PostController extends Controller {
 
@@ -20,7 +22,31 @@ class PostController extends Controller {
                 ->with('categoryId',$post->category->id)
                 ->with('categories',$categories);
         }
+    }
 
+    public function getSearch(Request $request)
+    {
+        $text = $request->input('text');
+        $clinic = Clinic::find($request->input('id'));
+        if (trim($text) != '') {
+            foreach ($clinic->categories as $category) {
+                $clinicCategories[] = $category->id;
+            }
+            $posts = Post::whereIn('category_id',$clinicCategories)
+                ->where(function($query) use ($text) {
+                    $query->where('title','LIKE','%'.$text.'%')
+                        ->orWhere('text','LIKE','%'.$text.'%');
+                })
+                ->paginate(10);
+            return view('blog.home')
+                ->with('clinic',$clinic)
+                ->with('categories',$clinic->categories)
+                ->with('categoryId',null)
+                ->with('text',$text)
+                ->with('posts',$posts);
+        } else {
+            return redirect('/clinic/home/'.$clinic->id.'/'.$clinic->slug);
+        }
     }
 
 }

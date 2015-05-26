@@ -1,15 +1,41 @@
 <div class="col-md-4">
+
+    @yield('topSidebar')
+
     <!-- Blog Search Well -->
     <div class="well">
         <h4>Search</h4>
+        @if (strpos(Request::url(),'question') !== false)
+            {!!Form::open([
+                'url'=>'/question/search',
+                'method'=>'GET'
+            ])!!}
+        @else
+            {!!Form::open([
+                'url'=>'/post/search',
+                'method'=>'GET'
+            ])!!}
+        @endif
+        {!!Form::hidden('id',$clinic->id,[])!!}
         <div class="input-group">
-            <input type="text" class="form-control">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
+            @if (isset($text))
+                {!!Form::text('text',$text,[
+                    'class' => 'form-control',
+                    'id'=>'text',
+                ])!!}
+            @else
+                {!!Form::text('text',null,[
+                    'class' => 'form-control',
+                    'id'=>'text',
+                ])!!}
+            @endif
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
         </div>
+        {!!Form::close();!!}
     </div>
 
     <!-- Blog Categories Well -->
@@ -37,4 +63,13 @@
             </ul>
         </div>
     </div>
+
+    @if(count ($clinic->ads))
+            @foreach($clinic->ads as $ad)
+                <a href="{{$ad->link}}">
+                    <img src="/uploads/{{$ad->img_url}}" class="img-responsive" alt="{{$ad->name}}"/>
+                </a>
+                <br/>
+            @endforeach
+    @endif
 </div>

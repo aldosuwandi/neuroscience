@@ -29,6 +29,7 @@ Route::controllers([
     'admin/question' => 'Admin\QuestionController',
     'admin/event' => 'Admin\EventController',
     'admin/schedule' => 'Admin\ScheduleController',
+    'admin/ads' => 'Admin\AdsController',
     'admin/image' => 'Admin\ImageController',
 
     //BLOG

@@ -1,10 +1,15 @@
 @extends('app')
 
 @section('content')
+    <style>
+        .highlight { background-color: yellow }
+    </style>
     <div class="row">
 
         <!-- Blog Entries Column -->
-        @yield('entries')
+        <div id="main">
+            @yield('entries')
+        </div>
 
         <!-- Blog Sidebar Widgets Column -->
         @include('partials.sidebar')
@@ -13,6 +18,7 @@
 
 @section('script')
     <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script src="{{asset('js/highlight-5.js')}}"></script>
     <script>
         $.fn.extend({
             treed: function (o) {
@@ -47,6 +53,7 @@
                 });
                 //fire event from the dynamically added icon
                 tree.find('.branch .indicator').each(function(){
+
                     $(this).on('click', function () {
                         $(this).closest('li').click();
                     });
@@ -69,6 +76,11 @@
                     $(this).click();
                 }
             });
+        @endif
+
+
+        @if (isset($text))
+            $('#main').highlight('{{$text}}');
         @endif
 
     </script>
