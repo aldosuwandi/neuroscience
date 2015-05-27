@@ -3,8 +3,10 @@ use App\Category;
 use App\Doctor;
 use App\Http\Requests;
 use App\Post;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
 use App\Clinic;
+use Illuminate\Support\Facades\File;
 use Laracasts\Flash\Flash;
 
 

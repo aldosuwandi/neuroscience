@@ -31,6 +31,7 @@ Route::controllers([
     'admin/schedule' => 'Admin\ScheduleController',
     'admin/ads' => 'Admin\AdsController',
     'admin/image' => 'Admin\ImageController',
+    'admin/config' => 'Admin\ConfigController',
 
     //BLOG
     'clinic' => 'Blog\ClinicController',

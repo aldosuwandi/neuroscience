@@ -5,8 +5,8 @@
     <h3>Profile {{$doctor->name}}</h3>
     <hr/>
     <div class="row">
-        <div class="col-sm-4" align="center">
-            <img class="img-center" src="/uploads/{{$doctor->img_url}}" style="margin-bottom: 20px;height:250px;width: 200px; ">
+        <div class="col-sm-4" align="center" style="padding-bottom: 20px">
+            <img class="img-center img-responsive" src="/uploads/{{$doctor->img_url}}">
         </div>
         <div class="col-sm-8">
             <table class="table table-bordered table-hover">

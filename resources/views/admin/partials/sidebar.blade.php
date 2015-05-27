@@ -28,6 +28,9 @@
             <a href="/admin/ads/list/1">Ads</a>
         </li>
         <li>
+            <a href="/admin/config/">Configuration</a>
+        </li>
+        <li>
             <a href="{{action('Auth\AuthController@getLogout')}}">Logout</a>
         </li>
 
