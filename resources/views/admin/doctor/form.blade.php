@@ -21,7 +21,7 @@
         <div class="col-sm-6">
             <div class="control-group form-group">
                 <div class="controls">
-                    {!!Form::label('doctor image')!!}
+                    {!!Form::label('doctor image (280x320)')!!}
                     {!!Form::file('image') !!}
                 </div>
             </div>

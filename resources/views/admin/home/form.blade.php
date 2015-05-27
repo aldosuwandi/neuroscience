@@ -54,7 +54,7 @@
     </div>
     <div class="control-group form-group">
         <div class="controls">
-            {!!Form::label('banner image')!!}
+            {!!Form::label('banner image (1900x540)')!!}
             {!!Form::file('image') !!}
         </div>
     </div>

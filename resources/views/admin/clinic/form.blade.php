@@ -45,7 +45,7 @@
     </div>
     <div class="control-group form-group">
         <div class="controls">
-            {!!Form::label('clinic background')!!}
+            {!!Form::label('clinic background (700x450)')!!}
             {!!Form::file('image') !!}
             {!!$errors->first('image', '<p class="help-block">:message</p>')!!}
         </div>

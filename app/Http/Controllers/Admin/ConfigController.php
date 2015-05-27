@@ -33,18 +33,18 @@ class ConfigController extends AdminController {
             exec('mysql --user='.$username.' --password='.$password.' '.$database.' < temp/temp.sql');
             unlink('temp/temp.sql');
             \Flash::info('Database imported !');
-            return redirect('admin/config');
         }
+        return redirect('admin/config');
     }
 
     public function getUpdate()
     {
-        $result = false;
         \Artisan::call('down');
         exec('git pull --rebase');
         exec('composer update -d=../');
         \Artisan::call('up');
-        return $result;
+        \Flash::info('Application has been updated !');
+        return redirect('admin/config');
     }
 
     public function getCache($operation)
