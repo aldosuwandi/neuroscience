@@ -153,7 +153,7 @@ return [
         'Anhskohbo\NoCaptcha\NoCaptchaServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         'Roumen\Sitemap\SitemapServiceProvider',
-
+        'Barryvdh\Debugbar\ServiceProvider',
 
 
     ],
@@ -206,6 +206,7 @@ return [
         'Form'      => 'Illuminate\Html\FormFacade',
         'Html'      => 'Illuminate\Html\HtmlFacade',
         'Flash'     => 'Laracasts\Flash\Flash',
+        'Debugbar' => 'Barryvdh\Debugbar\Facade',
 
     ],
 

@@ -15,7 +15,7 @@ class CreateCache extends Migration {
         Schema::create('cache', function($table)
         {
             $table->string('key')->unique();
-            $table->text('value');
+            $table->longText('value');
             $table->integer('expiration');
         });
 	}

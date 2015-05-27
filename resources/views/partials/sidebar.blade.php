@@ -40,15 +40,22 @@
 
     <!-- Blog Categories Well -->
     <div class="well">
-        <h4>Categories</h4>
+        <h4>Categories
+            <small>
+                (<a href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">{{$clinic->name}}
+                </a>)
+            </small>
+
+        </h4>
         <div class="row">
             <ul id="category_tree">
                 @foreach($categories as $category)
                     <li value="{{$category->id}}">
                         <a href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}/{{$category->slug}}">{{$category->name}}</a>
-                        <span class="badge pull-right">{!! count($category->posts()->getResults()); !!}</span>
+                        <?php $postList = $category->getPosts(); ?>
+                        <span class="badge pull-right">{!! count($postList); !!}</span>
                     <ul>
-                        @foreach($category->posts()->getResults() as $post)
+                        @foreach($postList as $post)
                             <li>
                                 <a href="/post/view/{{$post->id}}/{{$post->slug}}">{{$post->title}}</a>
                             </li>

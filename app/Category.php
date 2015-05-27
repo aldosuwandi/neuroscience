@@ -18,6 +18,15 @@ class Category extends Model
         return $this->hasOne('App\Clinic','id','clinic_id');
     }
 
+    public function getPosts()
+    {
+        $posts = \Cache::rememberForever('posts_'.$this->id, function()
+        {
+            return Post::where('category_id','=',$this->id)->get();
+        });
+        return $posts;
+    }
+
     public static function create(array $attributes)
     {
         $attributes['slug'] = str_slug($attributes['name']);

@@ -88,13 +88,17 @@ class PostController extends AdminController
             'text' => $request->input('text'),
             'img_url' => $fileName
         ]);
+        \Cache::forever('posts_'.$request->input('category_id'),Post::where('category_id','=',$request->input('category_id'))->get());
         Flash::success('Post baru telah dibuat');
         return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 
     public function getDelete($id)
     {
-        Post::find($id)->delete();
+        $post = Post::find($id);
+        $categoryId = $post->category->id;
+        $post->delete();
+        \Cache::forever('posts_'.$categoryId,Post::where('category_id','=',$categoryId)->get());
         Flash::success('Post telah dihapus');
         return redirect('admin/post/list/1/1');
     }
@@ -116,6 +120,7 @@ class PostController extends AdminController
         $post->slug = str_slug($request->input('title'));
         $post->save();
         Flash::success('Post telah diperbaharui');
+        \Cache::forever('posts_'.$request->input('category_id'),Post::where('category_id','=',$request->input('category_id'))->get());
         return redirect('admin/post/list/' . $request->input('clinic_id') . '/' . $request->input('category_id'));
     }
 

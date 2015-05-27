@@ -32,7 +32,7 @@ class ClinicController extends Controller {
 
         $categories = \Cache::rememberForever('categories_'.$id, function() use ($id)
         {
-           return Clinic::find($id)->categories()->getResults();
+           return Clinic::find($id)->categories;
         });
 
         if (!is_null($categorySlug)) {
