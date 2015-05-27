@@ -11,11 +11,11 @@
         <p>{{$question->question_text}}</p>
         <hr>
         <h3>Jawaban</h3>
+        <p>
+            by {{$question->answering}}
+        </p>
         <div class="well">
-            <p>
-                by {{$question->answering}}
-            </p>
-            <p style="font-style: italic">{{$question->answer_text}}</p>
+            <p style="font-style: italic"><?php echo $question->answer_text ?></p>
         </div>
     </div>
 
