@@ -12,5 +12,11 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.less('app.less');
+    mix.styles([
+        "vendor/bootstrap.min.css",
+        "vendor/bootstrap-theme.min.css",
+        "vendor/froala_content.min.css",
+        "vendor/froala_style.min.css",
+        "vendor/app.css"
+    ], 'public/css/all.css','public/css');
 });

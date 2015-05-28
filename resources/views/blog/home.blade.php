@@ -4,16 +4,16 @@
     <div class="col-md-8">
         <h1 class="page-header">{{$clinic->name}}</h1>
         @if (is_null($posts))
-            <div class="article" style="text-align:justify">
+            <div class="article">
                 <?php echo $clinic->description; ?>
             </div>
             <hr>
         @else
             @foreach($posts as $post)
-                <div class="article" style="text-align:justify">
+                <div class="article">
                     <h3> <a href="/post/view/{{$post->id}}/{{$post->slug}}">{{$post->title}}</a></h3>
                     @if ($post->creator != 'Unspecified')
-                    <p class="lead" style="font-size: 17px;margin-bottom:5px">oleh {{$post->creator}} </p>
+                    <p class="lead postAuthor">oleh {{$post->creator}} </p>
                     @endif
                     <p><span class="glyphicon glyphicon-time"></span> Dibuat  {{$post->created_at}}</p>
                     <hr>

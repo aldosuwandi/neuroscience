@@ -12,6 +12,64 @@ body {
     padding-top: 70px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
 }
 
+#welcomeBody {
+    padding-top: 50px;
+    background: #FFFAE7;
+}
+
+#myCarousel {
+    height: auto;
+    margin-top: 30px
+}
+
+#clinicContainer {
+    width: auto
+}
+
+div.wrapper{
+    float:left; /* important */
+    position:relative; /* important(so we can absolutely position the description div */
+    margin-bottom: 25px;
+}
+div.description{
+    position:absolute; /* absolute position (so we can position it where we want)*/
+    bottom:0px; /* position will be on bottom */
+    left:0px;
+    width:100%;
+    /* styling bellow */
+    background-color:black;
+    font-size:15px;
+    color:white;
+    opacity:0.6; /* transparency */
+    filter:alpha(opacity=60); /* IE transparency */
+}
+p.description_content{
+    padding:10px;
+    margin:0px;
+}
+
+.description_content a{
+    color:#ffffff;
+}
+
+.imgClinic {
+    max-width:100%;
+    height:auto;
+}
+
+.postAuthor {
+    font-size: 17px;
+    margin-bottom:5px
+}
+
+#doctorTable tbody tr .col-sm-4 {
+    background:#FCF5DD;
+}
+
+#doctorPicture {
+    padding-bottom: 20px;
+}
+
 .img-portfolio {
     margin-bottom: 30px;
 }
@@ -20,10 +78,10 @@ body {
     opacity: 0.8;
 }
 
-#bs-example-navbar-collapse-1 li a {
+#main-navigation li a {
     color: #1A2674;
 }
-#bs-example-navbar-collapse-1 li a:hover {
+#main-navigation li a:hover {
     color: #47AA42;
 }
 #title_brand{
@@ -287,4 +345,8 @@ footer {
     margin:0px 0px 0px 0px;
     padding:0px 0px 0px 0px;
     outline: 0;
+}
+
+#category_tree {
+    display: none;
 }

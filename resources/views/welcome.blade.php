@@ -3,7 +3,7 @@
 <head>
     @include('partials.head')
 </head>
-<body style="padding-top: 50px;background: #FFFAE7;">
+<body id="welcomeBody">
     @if (!is_null($event))
     <div id="myModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog"
          aria-labelledby="myLargeModalLabel" aria-hidden="true">
@@ -22,7 +22,7 @@
     </div>
     @endif
     @include('partials.nav')
-    <header id="myCarousel" class="carousel slide" style="height: auto;margin-top: 30px">
+    <header id="myCarousel" class="carousel slide">
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
             @for($i = 0; $i < count($homes); $i++)
@@ -44,29 +44,7 @@
             <span class="icon-next"></span>
         </a>
     </header>
-    <style>
-        div.wrapper{
-            float:left; /* important */
-            position:relative; /* important(so we can absolutely position the description div */
-        }
-        div.description{
-            position:absolute; /* absolute position (so we can position it where we want)*/
-            bottom:0px; /* position will be on bottom */
-            left:0px;
-            width:100%;
-            /* styling bellow */
-            background-color:black;
-            font-size:15px;
-            color:white;
-            opacity:0.6; /* transparency */
-            filter:alpha(opacity=60); /* IE transparency */
-        }
-        p.description_content{
-            padding:10px;
-            margin:0px;
-        }
-    </style>
-    <div class="container" style="width: auto">
+    <div id="clinicContainer" class="container">
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
@@ -75,16 +53,16 @@
             </div>
             @foreach($clinics as $clinic)
                 <div class="col-md-4">
-                    <div class='wrapper' style="margin-bottom: 25px;">
+                    <div class='wrapper'>
                         <!-- image -->
                         <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">
-                            <img src="/uploads/{{$clinic->img_url}}" style="max-width:100%;height:auto;" class="img-responsive">
+                            <img src="/uploads/{{$clinic->img_url}}" class="img-responsive imgClinic">
                         </a>
                         <!-- description div -->
                         <div class='description'>
                             <!-- description content -->
                             <p class='description_content'>
-                                <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}" style="color:#ffffff;">{{$clinic->name}}</a>
+                                <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">{{$clinic->name}}</a>
                             </p>
                             <!-- end description content -->
                         </div>
@@ -106,10 +84,6 @@
             @if (!is_null($event))
                 $('#myModal').modal('show');
             @endif
-
-            $('.navbar-collapse').on('shown.bs.collapse', function() {
-                aleret
-            });
         });
     </script>
 </body>

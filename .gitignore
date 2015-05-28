@@ -5,3 +5,4 @@
 composer.lock
 public/temp
 neuro.sql
+public/css/vendor

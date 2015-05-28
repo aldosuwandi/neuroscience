@@ -11,7 +11,7 @@
     <div class="col-md-8">
         <h2 class="page-header">Tanya Jawab {{$clinic->name}}</h2>
         @foreach($questions as $question)
-            <div class="article" style="text-align:justify">
+            <div class="article">
                 <h4>
                     <a href="/question/view/{{$clinic->id}}/{{$clinic->slug}}/{{$question->id}}/{!!str_slug($question->question_title)!!}">
                         {{$question->question_title}}
@@ -31,3 +31,4 @@
         </div>
     </div>
 @endsection
+

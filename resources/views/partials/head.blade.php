@@ -5,11 +5,7 @@
 <title>Siloam - Neuro Center</title>
 <link rel="shortcut icon" href="{{asset('/images/favicon.ico')}}">
 <link href="{{asset('/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
-<link href="{{ asset('/css/bootstrap.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/bootstrap-theme.css') }}" rel="stylesheet">
-<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
-<link href="{{ asset('css/froala_content.min.css') }}" rel="stylesheet">
-<link href="{{ asset('css/froala_style.min.css') }}" rel="stylesheet">
+<link href="{{asset('/css/all.css') }}" rel="stylesheet">
 
 <!-- Fonts -->
 <link href='//fonts.googleapis.com/css?family=Roboto:400,300' rel='stylesheet' type='text/css'>

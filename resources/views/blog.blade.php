@@ -69,15 +69,17 @@
         });
 
         //Initialization of treeviews
-        $('#category_tree').treed();
-        @if (!is_null($categoryId))
+        $(document).ready(function() {
+            $('#category_tree').treed();
+            $('#category_tree').show();
+            @if (!is_null($categoryId))
             $( "#category_tree li" ).each(function(index) {
                 if ($(this).val() == {{$categoryId}}) {
                     $(this).click();
                 }
             });
-        @endif
-
+            @endif
+        });
 
         @if (isset($text))
             $('#main').highlight('{{$text}}');
