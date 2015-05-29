@@ -14,8 +14,8 @@
                         <span aria-hidden="true">&times;</span></button>
                     <h4 class="modal-title">{{$event->name}}</h4>
                 </div>
-                <a href="/events/view/{{$event->id}}">
-                    <img  class="img-responsive" src="/uploads/{{$event->img_url}}"  style="max-height: 100%;max-width: 100%">
+                <a href="{{url('/events/view/'.$event->id)}}">
+                    <img  class="img-responsive" src="{{url('/uploads/'.$event->img_url)}}"  style="max-height: 100%;max-width: 100%">
                 </a>
             </div>
         </div>
@@ -28,8 +28,8 @@
             @for($i = 0; $i < count($homes); $i++)
             <div class="item @if($i == 0) active @endif">
                 <div class="fill">
-                    <a href="{{$homes[$i]->link}}">
-                        <img  src="/uploads/{{$homes[$i]->img_url}}" title="{{$homes[$i]->title}}" class="img-responsive"
+                    <a href="{{url($homes[$i]->link)}}">
+                        <img  src="{{url('/uploads/'.$homes[$i]->img_url)}}" title="{{$homes[$i]->title}}" class="img-responsive"
                              alt="{{$homes[$i]->caption}}" style="margin:auto;height:auto">
                     </a>
                 </div>
@@ -55,14 +55,14 @@
                 <div class="col-md-4">
                     <div class='wrapper'>
                         <!-- image -->
-                        <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">
-                            <img src="/uploads/{{$clinic->img_url}}" class="img-responsive imgClinic">
+                        <a href="{{url('/clinic/home/'.$clinic->id.'/'.$clinic->slug)}}">
+                            <img src="{{url('/uploads/'.$clinic->img_url)}}" class="img-responsive imgClinic">
                         </a>
                         <!-- description div -->
                         <div class='description'>
                             <!-- description content -->
                             <p class='description_content'>
-                                <a  href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">{{$clinic->name}}</a>
+                                <a href="{{url('/clinic/home/'.$clinic->id.'/'.$clinic->slug)}}">{{$clinic->name}}</a>
                             </p>
                             <!-- end description content -->
                         </div>

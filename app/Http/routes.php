@@ -16,7 +16,6 @@ Route::get('/',[
     'uses' => 'Blog\HomeController@getIndex'
 ]);
 
-
 Route::controllers([
 
     //ADMIN

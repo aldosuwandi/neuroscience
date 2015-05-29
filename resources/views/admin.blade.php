@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     @include('partials.head')
-    <link href="{{ asset('js/external/google-code-prettify/prettify.css') }}" rel="stylesheet">
+    <link href="{{asset('js/external/google-code-prettify/prettify.css') }}" rel="stylesheet">
     <link href="{{ asset('css/froala_editor.min.css') }}" rel="stylesheet">
 </head>
 <body>

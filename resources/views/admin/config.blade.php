@@ -2,11 +2,11 @@
 
 @section('content')
     <h4> Version 0.5-Beta </h4>
-    <a class="btn  btn-success" href="/admin/config/update">Update</a>
+    <a class="btn  btn-success" href="{{url('/admin/config/update')}}">Update</a>
     <hr/>
 
     <h4>Dump Database </h4>
-    <a class="btn  btn-danger" href="/admin/config/database/dump">Dump</a>
+    <a class="btn  btn-danger" href="{{url('/admin/config/database/dump')}}">Dump</a>
     <hr/>
 
     <h4>Import Database </h4>
@@ -26,8 +26,8 @@
     <hr/>
 
     <h4> Cache </h4>
-    <a class="btn  btn-success" href="/admin/config/cache/clear">Clear App Cache</a>
-    <a class="btn  btn-success" href="/admin/config/cache/route">Cache Route</a>
-    <a class="btn  btn-success" href="/admin/config/cache/config">Cache Config</a>
+    <a class="btn  btn-success" href="{{url('/admin/config/cache/clear')}}">Clear App Cache</a>
+    <a class="btn  btn-success" href="{{url('/admin/config/cache/route')}}">Cache Route</a>
+    <a class="btn  btn-success" href="{{url('/admin/config/cache/config')}}">Cache Config</a>
     <hr/>
 @stop

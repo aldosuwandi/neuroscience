@@ -14,7 +14,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" style="width: 300px">
                     @foreach($clinics as $clinic)
                         <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="/admin/question/list/{{$clinic->id}}">
+                            <a role="menuitem" tabindex="-1" href="{{url('/admin/question/list/'.$clinic->id)}}">
                                 {{$clinic->name}}
                                 <span class="badge pull-right">{{$clinic->unAnswered()}}</span>
                             </a>
@@ -42,7 +42,7 @@
                 @foreach($questions as $question)
                     <tr>
                         <td>
-                            <a href="/admin/question/edit/{{$question->id}}">
+                            <a href="{{url('/admin/question/edit/'.$question->id)}}">
                                 {{$question->question_title}}
                             </a>
                         </td>
@@ -50,14 +50,14 @@
                         <td>{{$question->answering}}</td>
                         <td>{{$question->created_at}}</td>
                         <td>
-                            <a class="btn btn-sm btn-info" href="/admin/question/edit/{{$question->id}}">
+                            <a class="btn btn-sm btn-info" href="{{url('/admin/question/edit/'.$question->id)}}">
                                 @if (!$question->published)
                                     Answer
                                 @else
                                     Edit Answer
                                 @endif
                             </a>
-                            <a class="btn btn-sm btn-success" href="/admin/question/delete/{{$question->id}}">Delete</a>
+                            <a class="btn btn-sm btn-success" href="{{url('/admin/question/delete/'.$question->id)}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

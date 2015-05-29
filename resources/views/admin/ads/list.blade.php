@@ -14,7 +14,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     @foreach($clinics as $clinic)
                         <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="/admin/ads/list/{{$clinic->id}}">
+                            <a role="menuitem" tabindex="-1" href="{{url('/admin/ads/list/'.$clinic->id)}}">
                                 {{$clinic->name}}
                             </a>
                         </li>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="/admin/ads/create">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/ads/create')}}">Create</a>
     <hr/>
     <div class="row">
         <div class="table-responsive">
@@ -43,13 +43,13 @@
                 @foreach($ads as $ad)
                     <tr>
                         <td>
-                            <a href="/admin/ads/create/{{$ad->id}}">{{$ad->name}}</a>
+                            <a href="{{url('/admin/ads/create/'.$ad->id)}}">{{$ad->name}}</a>
                         </td>
                         <td>{{$ad->link}}</td>
                         <td>{{$ad->created_at}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger" href="/admin/ads/create/{{$ad->id}}">Edit</a>
-                            <a class="btn btn-sm btn-success" href="/admin/ads/delete/{{$ad->id}}">Delete</a>
+                            <a class="btn btn-sm btn-danger" href="{{url('/admin/ads/create/'.$ad->id)}}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="{{url('/admin/ads/delete/'.$ad->id)}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

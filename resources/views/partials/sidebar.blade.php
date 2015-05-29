@@ -42,7 +42,7 @@
     <div class="well">
         <h4>Categories
             <small>
-                (<a href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}">{{$clinic->name}}
+                (<a href="{{url('/clinic/home/'.$clinic->id.'/'.$clinic->slug)}}">{{$clinic->name}}
                 </a>)
             </small>
 
@@ -51,13 +51,13 @@
             <ul id="category_tree">
                 @foreach($categories as $category)
                     <li value="{{$category->id}}">
-                        <a href="/clinic/home/{{$clinic->id}}/{{$clinic->slug}}/{{$category->slug}}">{{$category->name}}</a>
+                        <a href="{{url('/clinic/home/'.$clinic->id.'/'.$clinic->slug.'/'.$category->slug)}}">{{$category->name}}</a>
                         <?php $postList = $category->getPosts(); ?>
                         <span class="badge pull-right">{!! count($postList); !!}</span>
                     <ul>
                         @foreach($postList as $post)
                             <li>
-                                <a href="/post/view/{{$post->id}}/{{$post->slug}}">{{$post->title}}</a>
+                                <a href="{{url('/post/view/'.$post->id.'/'.$post->slug)}}">{{$post->title}}"</a>
                             </li>
                         @endforeach
                     </ul>
@@ -65,7 +65,7 @@
                 @endforeach
                 <li>
                     <i class="indicator glyphicon glyphicon-question-sign"></i>
-                    <a href="/question/list/{{$clinic->id}}/{{$clinic->slug}}">Tanya Jawab</a>
+                    <a href="{{url('/question/list/'.$clinic->id.'/'.$clinic->slug)}}">Tanya Jawab</a>
                 </li>
             </ul>
         </div>
@@ -74,7 +74,7 @@
     @if(count ($clinic->ads))
             @foreach($clinic->ads as $ad)
                 <a href="{{$ad->link}}">
-                    <img src="/uploads/{{$ad->img_url}}" class="img-responsive" alt="{{$ad->name}}"/>
+                    <img src="{{url('/uploads/'.$ad->img_url)}}" class="img-responsive" alt="{{$ad->name}}"/>
                 </a>
                 <br/>
             @endforeach

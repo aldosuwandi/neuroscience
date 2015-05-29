@@ -3,7 +3,7 @@
 @section('content')
     <h3>Clinic List</h3>
     <hr/>
-    <a class="btn btn-primary" href="/admin/clinic/create">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/clinic/create')}}">Create</a>
     <hr/>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14">
@@ -19,13 +19,13 @@
             @foreach($clinics as $clinic)
                 <tr>
                     <td>
-                        <a href="/admin/clinic/create/{{$clinic->id}}">{{$clinic->name}}</a>
+                        <a href="{{url('/admin/clinic/create/'.$clinic->id)}}">{{$clinic->name}}</a>
                     </td>
                     <td>{!! strip_tags(substr($clinic->description,0,100)) !!}....</td>
                     <td>{{$clinic->created_at}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger" href="/admin/clinic/create/{{$clinic->id}}">Edit</a>
-                        <a class="btn btn-sm btn-success" href="/admin/clinic/delete/{{$clinic->id}}">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="{{url('/admin/clinic/create/'.$clinic->id)}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="{{url('/admin/clinic/delete/'.$clinic->id)}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

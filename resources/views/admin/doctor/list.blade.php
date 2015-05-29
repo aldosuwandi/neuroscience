@@ -3,7 +3,7 @@
 @section('content')
     <h3>Doctor List</h3>
     <hr/>
-    <a class="btn btn-primary" href="/admin/doctor/create">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/doctor/create')}}">Create</a>
     <hr/>
     <div class="table-responsive">
         <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14px">
@@ -19,15 +19,15 @@
             @foreach($doctors as $doctor)
                 <tr>
                     <td>
-                        <a href="/admin/doctor/create/{{$doctor->id}}">
+                        <a href="{{url('/admin/doctor/create/'.$doctor->id)}}">
                             {{$doctor->name}}
                         </a>
                     </td>
                     <td>{{$doctor->title}}</td>
                     <td>{{$doctor->email}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger" href="/admin/doctor/create/{{$doctor->id}}">Edit</a>
-                        <a class="btn btn-sm btn-success" href="/admin/doctor/delete/{{$doctor->id}}">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="{{url('/admin/doctor/create/'.$doctor->id)}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="{{url('/admin/doctor/delete/'.$doctor->id)}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

@@ -14,7 +14,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     @foreach($clinics as $clinic)
                         <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="/admin/category/list/{{$clinic->id}}">
+                            <a role="menuitem" tabindex="-1" href="{{url('/admin/category/list/'.$clinic->id)}}">
                                 {{$clinic->name}}
                             </a>
                         </li>
@@ -24,7 +24,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="/admin/category/create">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/category/create')}}">Create</a>
     <hr/>
     <div class="row">
         <div class="table-responsive">
@@ -43,13 +43,13 @@
                 @foreach($categories as $category)
                     <tr>
                         <td>
-                            <a href="/admin/category/create/{{$category->id}}">{{$category->name}}</a>
+                            <a href="{{url('/admin/category/create/'.$category->id)}}">{{$category->name}}</a>
                         </td>
                         <td>{!!count($category->posts)!!}</td>
                         <td>{{$category->created_at}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger" href="/admin/category/create/{{$category->id}}">Edit</a>
-                            <a class="btn btn-sm btn-success" href="/admin/category/delete/{{$category->id}}">Delete</a>
+                            <a class="btn btn-sm btn-danger" href="{{url('/admin/category/create/'.$category->id)}}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="{{url('/admin/category/delete/'.$category->id)}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

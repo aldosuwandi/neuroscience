@@ -14,7 +14,7 @@
                 <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                     @foreach($clinics as $clinic)
                         <li role="presentation">
-                            <a role="menuitem" tabindex="-1" href="/admin/post/list/{{$clinic->id}}">
+                            <a role="menuitem" tabindex="-1" href="{{url('/admin/post/list/'.$clinic->id)}}">
                                 {{$clinic->name}}
                             </a>
                         </li>
@@ -33,7 +33,7 @@
                     <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
                         @foreach($categories as $category)
                             <li role="presentation">
-                                <a role="menuitem" tabindex="-1" href="/admin/post/list/{{$clinicId}}/{{$category->id}}">
+                                <a role="menuitem" tabindex="-1" href="{{url('/admin/post/list/'.$clinicId.'/'.$category->id)}}">
                                     {{$category->name}}
                                 </a>
                             </li>
@@ -44,7 +44,7 @@
         </div>
     </div>
     <hr/>
-    <a class="btn btn-primary" href="/admin/post/create?clinic=1">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/post/create')}}?clinic=1">Create</a>
     <hr/>
     <div class="table-responsive">
         @if (!empty($posts))
@@ -61,14 +61,14 @@
             @foreach($posts as $post)
                 <tr>
                     <td>
-                        <a href="/admin/post/create/{{$post->id}}?clinic={{$post->category->clinic->id}}">{{$post->title}}
+                        <a href="{{url('/admin/post/create/'.$post->id)}}?clinic={{$post->category->clinic->id}}">{{$post->title}}
                         </a>
                     </td>
                     <td>{{$post->creator}}</td>
                     <td>{{$post->created_at}}</td>
                     <td>
-                        <a class="btn btn-sm btn-danger" href="/admin/post/create/{{$post->id}}?clinic={{$post->category->clinic->id}}">Edit</a>
-                        <a class="btn btn-sm btn-success" href="/admin/post/delete/{{$post->id}}">Delete</a>
+                        <a class="btn btn-sm btn-danger" href="{{url('/admin/post/create/'.$post->id)}}?clinic={{$post->category->clinic->id}}">Edit</a>
+                        <a class="btn btn-sm btn-success" href="{{url('/admin/post/delete/'.$post->id)}}">Delete</a>
                     </td>
                 </tr>
             @endforeach

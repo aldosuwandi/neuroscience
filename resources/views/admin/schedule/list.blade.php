@@ -3,7 +3,7 @@
 @section('content')
     <h3>Schedule List</h3>
     <hr/>
-    <a class="btn btn-primary" href="/admin/schedule/create">Create</a>
+    <a class="btn btn-primary" href="{{url('/admin/schedule/create')}}">Create</a>
     <hr/>
         <div class="table-responsive">
             <table class="table table-striped table-hover table-condensed table-bordered" style="font-size: 14">
@@ -20,7 +20,7 @@
                 @foreach($schedules as $schedule)
                     <tr>
                         <td>
-                            <a href="/admin/schedule/create/{{$schedule->id}}">
+                            <a href="{{url('/admin/schedule/create/'.$schedule->id)}}">
                                 {{$schedule->name}}
                             </a>
                         </td>
@@ -28,8 +28,8 @@
                         <td>{{$schedule->day}}</td>
                         <td>{{$schedule->time}}</td>
                         <td>
-                            <a class="btn btn-sm btn-danger" href="/admin/schedule/create/{{$schedule->id}}">Edit</a>
-                            <a class="btn btn-sm btn-success" href="/admin/schedule/delete/{{$schedule->id}}">Delete</a>
+                            <a class="btn btn-sm btn-danger" href="{{url('/admin/schedule/create/'.$schedule->id)}}">Edit</a>
+                            <a class="btn btn-sm btn-success" href="{{url('/admin/schedule/delete/'.$schedule->id)}}">Delete</a>
                         </td>
                     </tr>
                 @endforeach

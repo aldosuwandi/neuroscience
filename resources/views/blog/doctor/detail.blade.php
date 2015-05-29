@@ -6,7 +6,7 @@
     <hr/>
     <div class="row">
         <div id="doctorPicture" class="col-sm-4" align="center">
-            <img class="img-center img-responsive" src="/uploads/{{$doctor->img_url}}">
+            <img class="img-center img-responsive" src="{{url('/uploads/'.$doctor->img_url)}}">
         </div>
         <div class="col-sm-8">
             <table id="doctorTable" class="table table-bordered table-hover">

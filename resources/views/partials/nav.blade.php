@@ -19,13 +19,13 @@
         <div class="collapse navbar-collapse" id="main-navigation">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="/events">Event</a>
+                    <a href="{{url('/events')}}">Event</a>
                 </li>
                 <li>
-                    <a href="/schedule">Jadwal Praktek</a>
+                    <a href="{{url('/schedule')}}>Jadwal Praktek</a>
                 </li>
                 <li>
-                    <a href="/doctors">Dokter</a>
+                    <a href="{{url('/doctors')}}>Dokter</a>
                 </li>
                 <li>
                     <a href="http://www.siloamhospitals.com/contact-us">Contact</a>
