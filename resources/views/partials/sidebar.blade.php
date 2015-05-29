@@ -57,7 +57,7 @@
                     <ul>
                         @foreach($postList as $post)
                             <li>
-                                <a href="{{url('/post/view/'.$post->id.'/'.$post->slug)}}">{{$post->title}}"</a>
+                                <a href="{{url('/post/view/'.$post->id.'/'.$post->slug)}}">{{$post->title}}</a>
                             </li>
                         @endforeach
                     </ul>

@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="#" style="margin-top: -15px">
                 <img width="200" height="50" src="{{asset('/images/logo_0_0.png')}}"/>
             </a>
-            <a id="title_brand" class="navbar-brand" href="/">Neuro Center</a>
+            <a id="title_brand" class="navbar-brand" href="{{url('/')}}">Neuro Center</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="main-navigation">
