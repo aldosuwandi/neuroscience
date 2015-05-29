@@ -22,10 +22,10 @@
                     <a href="{{url('/events')}}">Event</a>
                 </li>
                 <li>
-                    <a href="{{url('/schedule')}}>Jadwal Praktek</a>
+                    <a href="{{url('/schedule')}}">Jadwal Praktek</a>
                 </li>
                 <li>
-                    <a href="{{url('/doctors')}}>Dokter</a>
+                    <a href="{{url('/doctors')}}">Dokter</a>
                 </li>
                 <li>
                     <a href="http://www.siloamhospitals.com/contact-us">Contact</a>
