@@ -36,7 +36,7 @@ class ImageController extends AdminController {
 
             // Generate response.
             $response = new \StdClass;
-            $response->link = "/uploads/" . $name;
+            $response->link = url("/uploads/") . $name;
             echo stripslashes(json_encode($response));
         }
     }
