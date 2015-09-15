@@ -32,7 +32,7 @@
 <script src="{{asset('js/plugins/urls.min.js')}}"></script>
 <script src="{{asset('js/plugins/lists.min.js')}}"></script>
 <script src="{{asset('js/plugins/block_styles.min.js')}}"></script>
-
+<script>$.Editable.DEFAULTS.key ='{{getenv('FROALA_KEY')}}'</script>
 @yield('script')
 </body>
 </html>
